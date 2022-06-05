@@ -38,5 +38,5 @@ const PersonSchema = new mongoose.Schema({
 
 )
 
-const person = mongoose.model('Person', PersonSchema)
-module.exports = person
+const Person = mongoose.model('Person', PersonSchema)
+module.exports = Person
