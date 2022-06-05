@@ -23,6 +23,7 @@ class CarService {
 
 	static async findByIdAndDelete(payload) {
 		const result = await CarRepository.deleteCar(payload)
+		return result
 	}
 }
 

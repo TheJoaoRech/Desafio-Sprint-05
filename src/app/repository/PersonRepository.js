@@ -6,7 +6,24 @@ class PersonRepository {
 	}
     
 	static async listPerson(payload) {
-		return await PersonSchema.find(payload)
+		const customLabels = {
+            totalDocs: 'total',
+            docs: 'Person',
+            page: 'offset',
+            nextPage: false,
+            prevPage: false,
+            totalPages: 'offsets',
+            pagingCounter: false,
+            meta: false,
+            hasPrevPage: false,
+            hasNextPage: false
+        }
+        const options = {
+            limit: 5,
+            offset: 1,
+            customLabels: customLabels
+        }
+		return await PersonSchema.paginate(payload, options, {})
 	}
 
 	static async getPerson(payload) {
