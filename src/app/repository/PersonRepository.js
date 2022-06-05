@@ -22,4 +22,4 @@ class PersonRepository {
 	}
 }
 
-module.exports = new PersonRepository()
+module.exports = PersonRepository
