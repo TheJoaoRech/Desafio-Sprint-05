@@ -6,22 +6,22 @@ class CarService {
 		return result
 	}
 
-	static async listAll(payload) {
-		const result = await CarRepository.listAllCar(payload)
+	static async find(payload) {
+		const result = await CarRepository.listCar(payload)
 		return result
 	}
 
-	static async getById(payload) {
+	static async findById(payload) {
 		const result = await CarRepository.getCar(payload)
 		return result 
 	}
 
-	static async update(payload, id ) {
+	static async findByIdAndUpdate(payload, id ) {
 		const result = await CarRepository.updateCar(payload, id)
 		return result
 	}
 
-	static async delete(payload) {
+	static async findByIdAndDelete(payload) {
 		const result = await CarRepository.deleteCar(payload)
 	}
 }
