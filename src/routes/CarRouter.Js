@@ -6,8 +6,8 @@ const router = express.Router()
 router
 	.post("/api/v1/car", CarController.create)
 	.get("/api/v1/car", CarController.list)
-	.get('/:id', CarController.getById)
-	.put('/:id', CarController.update)
-	.delete('/:id', CarController.delete)
+	.get("/api/v1/car/:id", CarController.getById)
+	.put("/api/v1/car/:id", CarController.update)
+	.delete("/api/v1/car/:id", CarController.delete)
 
 module.exports = router
