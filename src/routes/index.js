@@ -1,7 +1,7 @@
 const {Router} = require('express')
+const PersonRouter = require('./PersonRouter')
 
-module.exports = (server) => {
-	server.use((req, res, next) => {
-		next();
-	})
+const routes = (app) => {
+	app.use(PersonRouter)
 }
+module.exports=routes
