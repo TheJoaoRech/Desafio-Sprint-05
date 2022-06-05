@@ -1,7 +1,7 @@
 const PersonService = require('../service/PersonService')
 
 class PersonController {
-	static async createPerson(req, res) {
+	static async create(req, res) {
 		try {
 			const result = await PersonService.create(req.body)
 			return res.status(201).json(result)
@@ -10,36 +10,36 @@ class PersonController {
 		}
 	}
 
-	static async listPerson(req, res) {
+	static async list(req, res) {
 		try {
-			const result = await PersonService.find(req.query)
+			const result = await PersonService.list(req.query)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
 
-	static async getPerson(req, res) {
+	static async getById(req, res) {
 		try {
-			const result = await PersonService.findById(req.params.id)
+			const result = await PersonService.getById(req.params.id)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
 
-	static async updatePerson(req, res) {
+	static async update(req, res) {
 		try {
-			const result = await PersonService.findByIdAndUpdate(req.params.id, req.body)
+			const result = await PersonService.updatePerson(req.params.id, req.body)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
     
-	static async deletePerson(req, res) {
+	static async delete(req, res) {
 		try {
-			const result = await PersonService.findByIdAndDelete(req.params.id)
+			const result = await PersonService.deletePerson(req.params.id)
 			return res.status(204).json(result)
 		} catch (error) {
 			return res.status(400).json(error)

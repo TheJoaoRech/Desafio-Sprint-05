@@ -6,22 +6,22 @@ class PersonService {
 		return result
 	}
 
-	static async find(payload) {
-		const result = await PersonRepository.listPerson(payload)
+	static async list(payload) {
+		const result = await PersonRepository.list(payload)
 		return result
 	}
 
-	static async findById(payload) {
-		const result = await PersonRepository.getPerson(payload)
+	static async getById(payload) {
+		const result = await PersonRepository.getById(payload)
 		return result
 	}
 
-	static async findByIdAndUpdate(id, payload) {
+	static async updatePerson(id, payload) {
 		const result = await PersonRepository.updatePerson(payload, id)
 		return result
 	}
 
-	static async findByIdAndDelete(payload) {
+	static async deletePerson(payload) {
 		const result = await PersonRepository.deletePerson(payload) 
         return result
 	}

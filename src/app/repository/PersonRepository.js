@@ -1,11 +1,11 @@
 const PersonSchema = require('../schema/PersonSchema')
 
 class PersonRepository {
-	static async createPerson(payload) {
+	static async create(payload) {
 		return await PersonSchema.create(payload)
 	}
     
-	static async listPerson(payload) {
+	static async list(payload) {
 		const customLabels = {
             totalDocs: 'total',
             docs: 'Person',
@@ -26,7 +26,7 @@ class PersonRepository {
 		return await PersonSchema.paginate(payload, options, {})
 	}
 
-	static async getPerson(payload) {
+	static async getById(payload) {
 		return await PersonSchema.findById(payload)
 	}
 
