@@ -7,12 +7,12 @@ class PersonService {
 	}
 
 	static async listAll(payload) {
-		const result = await PersonRepository.listPerson(payload)
+		const result = await PersonRepository.listAllPerson(payload)
 		return result
 	}
 
 	static async getById(payload) {
-		const result = await PersonRepository.getPerson(payload)
+		const result = await PersonRepository.listById(payload)
 		return result
 	}
 
