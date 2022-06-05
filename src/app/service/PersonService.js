@@ -27,4 +27,4 @@ class PersonService {
 	}
 }
 
-module.exports = new PersonService()
+module.exports = PersonService
