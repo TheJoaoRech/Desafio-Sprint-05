@@ -1,11 +1,11 @@
 const CarSchema = require('../schema/CarSchema')
 
 class CarRepository {
-	static async createCar(payload){
+	static async create(payload){
 		return await CarSchema.create(payload)
 	}
     
-	static async listCar(payload) {
+	static async list(payload) {
 		const customLabels = {
             totalDocs: 'total',
             docs: 'Car',
@@ -26,7 +26,7 @@ class CarRepository {
 		return await CarSchema.paginate(payload, {}) //Falta o Options dentro do ()
 	}
 
-	static async getCar(payload) {
+	static async getById(payload) {
 		return await CarSchema.findById(payload)
 	}
 

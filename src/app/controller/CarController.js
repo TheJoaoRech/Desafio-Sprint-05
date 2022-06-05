@@ -1,7 +1,7 @@
 const CarService = require('../service/CarService')
 
 class CarController {
-	static async createCar(req, res) {
+	static async create(req, res) {
 		try {
 			const result = await CarService.create(req.body)
 			return res.status(201).json(result)
@@ -10,36 +10,36 @@ class CarController {
 		}
 	}
 
-	static async listCar(req, res) {
+	static async list(req, res) {
 		try {
-			const result = await CarService.find(req.query)
+			const result = await CarService.list(req.query)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
 
-	static async getCar(req, res) {
+	static async getById(req, res) {
 		try {
-			const result = await CarService.findById(req.params.id)
+			const result = await CarService.getById(req.params.id)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
 
-	static async updateCar(req, res) {
+	static async update(req, res) {
 		try {
-			const result = await CarService.findByIdAndUpdate(req.params.id, req.body)
+			const result = await CarService.updateCar(req.params.id, req.body)
 			return res.status(200).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
 		}
 	}
     
-	static async deleteCar(req, res) {
+	static async delete(req, res) {
 		try {
-			const result = await CarService.findByIdAndDelete(req.params.id)
+			const result = await CarService.deleteCar(req.params.id)
 			return res.status(204).json(result)
 		} catch (error) {
 			return res.status(400).json(error)
