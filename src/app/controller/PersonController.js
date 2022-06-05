@@ -47,4 +47,4 @@ class PersonController {
 	}
 }
 
-module.exports = new PersonController()
+module.exports = PersonController
