@@ -1,7 +1,7 @@
-const express = require("express");
-const PersonController = require("../app/controller/PersonController");
+const express = require("express")
+const PersonController = require("../app/controller/PersonController")
 
-const router = express.Router();
+const router = express.Router()
 
 router
 	.post("/api/v1/person", PersonController.createPerson)
@@ -10,4 +10,4 @@ router
 	.put('/:id', PersonController.updatePerson)
 	.delete('/:id', PersonController.deletePerson)
 
-module.exports = router;
+module.exports = router
