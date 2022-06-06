@@ -23,7 +23,7 @@ class PersonRepository {
             offset: 1,
             customLabels: customLabels
         }
-		return await PersonSchema.paginate(payload, options, {})
+		return await PersonSchema.paginate(payload) //Options Bugado.
 	}
 
 	static async getById(payload) {
