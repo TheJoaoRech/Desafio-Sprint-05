@@ -12,13 +12,13 @@ module.exports = async (req, res, next) => {
 			email: Joi.string().min(10).email().lowercase().trim(),
 			password: Joi.string().min(6),
 			canDrive: Joi.string().valid('yes', 'no')
-		});
+		})
 
-		const { error } = await schemaPerson.validate(req.body, { abortEarl: true });
-		if (error) throw error;
-		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'};
-		return next();
+		const { error } = await schemaPerson.validate(req.body, { abortEarl: true })
+		if (error) throw error
+		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'}
+		return next()
 	} catch (error) {
-		return res.status(400).json({Error: error.message});
+		return res.status(400).json({Error: error.message})
 	}
-};
+}
