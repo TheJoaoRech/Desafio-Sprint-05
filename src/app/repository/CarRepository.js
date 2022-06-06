@@ -6,13 +6,13 @@ class CarRepository {
 	}
     
 	static async list(payload) {
-		const customLabels = {
+		const paginate = {
             totalDocs: 'total',
-            docs: 'Car',
+            docs: 'vehicles',
             page: 'offset',
+            totalPages: 'offsets',
             nextPage: false,
             prevPage: false,
-            totalPages: 'offsets',
             pagingCounter: false,
             meta: false,
             hasPrevPage: false,
@@ -21,9 +21,9 @@ class CarRepository {
         const options = {
             limit: 5,
             offset: 1,
-            customLabels: customLabels
+            customLabels: paginate
         }
-		return await CarSchema.paginate(payload) //Options Bugado.
+		return await CarSchema.paginate(payload, {}) //Options Bugado.
 	}
 
 	static async getById(payload) {
