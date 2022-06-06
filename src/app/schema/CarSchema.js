@@ -32,7 +32,8 @@ const CarSchema = new mongoose.Schema({
 		{
 			description: {
 				type: String,
-                required: true
+                required: true,
+				unique: true
 			},
 			_id: false
 		}
@@ -45,7 +46,7 @@ const CarSchema = new mongoose.Schema({
 
 },
 
-{versionKey: false}
+{ timestamps: false, versionKey: false }
 
 )
 
