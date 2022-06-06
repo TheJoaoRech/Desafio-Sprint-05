@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
+const bcrypt = require('bcryptjs')
 
 const PersonSchema = new mongoose.Schema({
 	name: {
@@ -9,7 +10,8 @@ const PersonSchema = new mongoose.Schema({
     
 	cpf: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
     
 	birthDay: {
@@ -19,12 +21,14 @@ const PersonSchema = new mongoose.Schema({
    
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
     
 	password: {
 		type: String,
-		required: true
+		required: true,
+		select: false
 	},
     
 	canDrive: {
@@ -35,9 +39,16 @@ const PersonSchema = new mongoose.Schema({
 
 },
 
-{versionKey: false}
+{ timestamps: false, versionKey: false }
 
 )
+
+PersonSchema.pre("save", async function (next) {
+	const hash = await bcrypt.hash(this.password, 10);
+	this.password = hash;
+
+	next();
+})
 
 PersonSchema.plugin(mongoosePaginate)
 const Person = mongoose.model('Person', PersonSchema)
