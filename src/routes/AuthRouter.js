@@ -6,5 +6,5 @@ const router = express.Router()
 
 router
 	.post("/api/v1/authenticate", AuthValidate, AuthController.auth)
-
+	
 module.exports = router
