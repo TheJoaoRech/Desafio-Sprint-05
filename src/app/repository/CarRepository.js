@@ -23,7 +23,7 @@ class CarRepository {
             offset: 1,
             customLabels: customLabels
         }
-		return await CarSchema.paginate(payload, {}) //Falta o Options dentro do ()
+		return await CarSchema.paginate(payload) //Options Bugado.
 	}
 
 	static async getById(payload) {
