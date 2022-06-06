@@ -53,7 +53,29 @@
 
     npm start
     
-    
+<h1 align=> ✴️ Endpoints: </h1>
+
+* 👉 Endpoints of the car:
+ ```
+ post -> ('/api/v1/car/) - Create a new car.
+ get -> ('/api/v1/car/) - List all the cars.
+ get -> ('/api/v1/car/:id) - List a specific car.
+ put -> ('/api/v1/car/:id) - Update a specific car.
+ delete -> ('/api/v1/car/:id) - Delete a specific car.
+ ```
+ * 👉 Edpoints of the person:
+ ```
+ post -> ('/api/v1/person/) - Create a new person.
+ get -> ('/api/v1/person/) - List all the persons.
+ get -> ('/api/v1/person/:id) - List a specific person.
+ put -> ('/api/v1/person/:id) - Update a specific person.
+ delete -> ('/api/v1/person/:id) - Delete a specific person.
+ ```
+ * 👉 Edpoint of the authentificate:
+ ```
+ post -> ('/api/v1/autenticate/) - Verify a email and password.
+ ```
+
 <h1 align=> 🖌️ API authors: </h1>
 
 * 👱‍♂️ **João Vítor Rech** - [Profile Link](https://github.com/TheJoaoRech)
