@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const authConfig = require('../../config/authConfig.json')
 
 class AuthService {
-    async auth(email, password) {
+    static async auth(email, password) {
         const person = await PersonRepository.auth(email)
 
         if (!person) {
@@ -25,4 +25,4 @@ class AuthService {
     }
 }
 
-module.exports = new AuthService()
+module.exports = AuthService

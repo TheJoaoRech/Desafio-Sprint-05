@@ -8,4 +8,4 @@ const routes = (app) => {
 	app.use(CarRouter)
 	app.use(AuthenticateRoute)
 }
-module.exports=routes
+module.exports = routes
