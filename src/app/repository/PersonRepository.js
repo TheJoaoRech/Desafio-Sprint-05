@@ -1,10 +1,6 @@
 const PersonSchema = require('../schema/PersonSchema')
 
 class PersonRepository {
-    static async auth(email){
-        return await PersonSchema.findOne({ email }).select('+password');
-    }
-
 	static async create(payload) {
 		return await PersonSchema.create(payload)
 	}
