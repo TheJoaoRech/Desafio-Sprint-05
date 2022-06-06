@@ -1,6 +1,15 @@
 <h1 align="center"> 🚗 API SPRINT 5: Renpass.uol - FINAL CHALLENGE 🚗 </h1>
 <h3 align="center"> This challenge has as main objective to create an API for a rental company that operates in the car segment , integrating MongoDB with Node.js. </h3>
 
+</br>
+<p align="center">
+ <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
+ <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+ <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
+ <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
+</p>
+</br>
+
 
 <h1 align> 🔍 Some informations about the project: </h1>
 
@@ -47,4 +56,4 @@
     
 <h1 align=> 🖌️ API authors: </h1>
 
-* **João Vítor Rech** - [Link do perfil](https://github.com/TheJoaoRech)
+* 👱‍♂️ **João Vítor Rech** - [Profile Link](https://github.com/TheJoaoRech)
