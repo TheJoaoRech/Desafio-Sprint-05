@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
 		const schemaPerson = Joi.object({
 
 			name: Joi.string().min(3).max(30).trim(),
-			cpf: Joi.string().regex(cpf).message('Your CPF should only contain characters accepted by the system!'),
+			cpf: Joi.string().regex(cpfValid).message('Your CPF should only contain characters accepted by the system!'),
 			birthDay: Joi.date().format('DD/MM/YYYY').min('01/01/2004'),
 			email: Joi.string().min(10).email().lowercase().trim(),
 			password: Joi.string().min(6),
