@@ -33,7 +33,6 @@ const CarSchema = new mongoose.Schema({
 			description: {
 				type: String,
                 required: true,
-				unique: true
 			},
 			_id: false
 		}
