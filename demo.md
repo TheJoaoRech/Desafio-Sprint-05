@@ -1,4 +1,6 @@
-## Create car example:
+<h1 align="center"> Some examples to test the code! 📜 </h1>
+
+## 👉 Create car example:
 
 ```
 {
@@ -19,7 +21,7 @@
 }
 ```
 
-## Create person example:
+## 👉 Create person example:
 
 ```
 {
@@ -32,12 +34,12 @@
 }
 ```
 
-## Authenticate example:
+## 👉 Authenticate example:
 
 ```
-    {
-        "email": "joazinho@email.com",
-        "password": "123456"
-    }
+{
+  "email": "joazinho@email.com",
+  "password": "123456"
+}
 ```
 
