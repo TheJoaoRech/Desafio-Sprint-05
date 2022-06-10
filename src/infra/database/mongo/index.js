@@ -1,16 +1,16 @@
-const mongoose = require('mongoose')
-const config = require('../../../config/config')
+const mongoose = require('mongoose');
+const config = require('../../../config/config');
 
 class Database {
 	constructor() {
-		this.connect()
+		this.connect();
 	}
 
 	connect(){
 		return mongoose.connect(
 			`mongodb://${config.database.host}/${config.database.collection}`
-		)
+		);
 	}
 }
 
-module.exports = new Database().connect()
+module.exports = new Database().connect();

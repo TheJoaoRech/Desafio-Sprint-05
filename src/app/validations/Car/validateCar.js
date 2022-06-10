@@ -1,4 +1,4 @@
-const Joi = require('joi').extend(require('@joi/date'))
+const Joi = require('joi').extend(require('@joi/date'));
 
 module.exports = async (req, res, next) => {
 	try {
@@ -11,12 +11,12 @@ module.exports = async (req, res, next) => {
 			accessories: Joi.array().min(1).unique().required()
 				.items({description: Joi.string().min(1).required().trim()}), 
 			passengersQtd: Joi.number().required().min(1)
-		})
+		});
 
-		const { error } = schemaCar.validate(req.body, { abortEarly: false})
-		if (error) throw error
-		return next()
+		const { error } = schemaCar.validate(req.body, { abortEarly: false});
+		if (error) throw error;
+		return next();
 	} catch (error) {
-		return res.status(400).json({Error: error.message})
+		return res.status(400).json({Error: error.message});
 	}
-}
+};
