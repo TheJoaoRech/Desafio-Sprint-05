@@ -10,7 +10,7 @@ class RentalRepository {
 			payload.address[dado].city = localidade;
 			payload.address[dado].state = uf;
 		}
-		return RentalSchema.create(payload);
+		return await RentalSchema.create(payload);
 	}
 
 	static async list(payload) {
