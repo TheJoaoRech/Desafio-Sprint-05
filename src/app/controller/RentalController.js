@@ -12,7 +12,7 @@ class RentalController {
 
 	static async list(req, res) {
 		try {
-			const result = await RentalServices.list(req.body);
+			const result = await RentalServices.list(req.query);
 			return res.status(200).json(result);
 		} catch (error) {
 			return res.status(400).json({Error: error.message});
