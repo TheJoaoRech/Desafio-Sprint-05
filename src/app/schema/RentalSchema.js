@@ -18,29 +18,42 @@ const RentalSchema = new mongoose.Schema({
 		required: true
 	},
 
-	address: [
-		{
-			zipCode: {
-				type: String,
-				required: true,	
-			},
+	address:[ {
+		zipCode: {
+			type: String,
+			required: true
+		},
 
-			number: {
-				type: Number,
-				required: true
-			},
+		street: {
+			type: String,
+		},
 
-			complement: {
-				type: String,
-			},
+		complement: {
+			type: String
+		},
 
-			isFilial: {
-				type: String,
-				required: true,
-				enum: [true, false]
-			}
-		}
-	]
+		district: {
+			type: String,
+			
+		},
+		number: {
+			type: Number,
+			
+		},
+		city: {
+			type: String,
+			
+		},
+		state: {
+			type: String,
+			
+		},
+		isFilial: {
+			type: Boolean,
+			required: true
+		},
+		_id: false
+	}]
 },
 
 { timestamps: false, versionKey: false}
