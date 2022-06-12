@@ -1,7 +1,16 @@
 const RentalSchema = require('../schema/RentalSchema');
+const axios = require('axios').default;
 
 class RentalRepository {
 	static async create(payload) {
+		for (let dado = 0; dado < payload.address.length; dado++) {
+			const { Logradouro, Bairro, Localidade, UF } = 
+			(await axios.get(`https://viacep.com.br/ws/${payload.address[dado].zipCode}/json`)).data;
+			payload.address[dado].street = Logradouro;
+			payload.address[dado].district = Bairro;
+			payload.address[dado].city = Localidade;
+			payload.address[dado].state = UF;
+		}
 		return await RentalSchema.create(payload);
 	}
 
