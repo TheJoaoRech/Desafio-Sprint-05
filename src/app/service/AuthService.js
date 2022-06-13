@@ -21,7 +21,7 @@ class AuthService {
 			expiresIn: 86400
 		});
         
-		return { token, email: person.email, canDrive: person.canDrive };
+		return { token, email: person.email };
 	}
 }
 
