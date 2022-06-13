@@ -28,7 +28,8 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.3",
     "mongoose-paginate-v2": "^1.6.3",
-    "moongose": "^1.0.0"
+    "moongose": "^1.0.0",
+    "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "eslint": "^8.17.0",
