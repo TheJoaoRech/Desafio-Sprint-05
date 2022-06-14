@@ -13,27 +13,30 @@
 
 <h1 align> 🔍 Some informations about the project: </h1>
 
-### 👉 Node version:
+### 👉 Node version used in the script:
 ```
 14.18.0
 ```
-### 👉 NPM version:
+### 👉 NPM version used in the script:
 ```
 6.14.15
 ```
 ### 📚 Libs:
 ```
-"eslint": "^8.17.0",
-"nodemon": "^2.0.16",
+"@joi/date": "^2.1.0",
+"axios": "^0.27.2",
 "bcryptjs": "^2.4.3",
-"body-parser": "^1.20.0,",
+"body-parser": "^1.20.0",
 "dotenv": "^16.0.1",
 "joi": "^17.6.0",
 "jsonwebtoken": "^8.5.1",
-"@joi/date": "^2.1.0",
 "moment": "^2.29.3",
 "mongoose-paginate-v2": "^1.6.3",
-"moongose": "^1.0.0".
+"moongose": "^1.0.0",
+"swagger-ui-express": "^4.4.0",
+"eslint": "^8.17.0",
+"nodemon": "^2.0.16",
+"supertest": "^6.2.3"
 ```
 ### 🖼️ Frameworks:
 ```
@@ -42,14 +45,22 @@
 
 <h1 align> 👣 Steps to run the code: </h1>
 
-## 👉 The entire application is contained within the `src` folder❗
+## 📁 The entire application is contained within the `src` folder❗
 
+### 1️⃣ - First clone the project:
 
-### 1️⃣ - First install dependencies:
+    git clone https://github.com/TheJoaoRech/Desafio-Sprint-05.git
+
+### 2️⃣ - Second install the dependencies:
 
     npm install
+    
+### 3️⃣ - Now change the server settings:
 
-### 2️⃣ - Then run the server:
+    Rename the ".env.example" file to ".env", 
+    Now configure the file as you want
+    
+### 4️⃣ - Then run the server:
 
     npm start
     
@@ -57,25 +68,37 @@
 
 * 👉 Endpoints of the car:
  ```
- post -> ('/api/v1/car/) - Create a new car.
- get -> ('/api/v1/car/) - List all the cars.
- get -> ('/api/v1/car/:id) - List a specific car.
- put -> ('/api/v1/car/:id) - Update a specific car.
- delete -> ('/api/v1/car/:id) - Delete a specific car.
+ post -> ('/api/v1/car/') - Create a new car.
+ get -> ('/api/v1/car/') - List all the cars or just a part defined by a parameter.
+ get -> ('/api/v1/car/:id') - List a specific car.
+ put -> ('/api/v1/car/:id') - Update a specific car.
+ delete -> ('/api/v1/car/:id') - Delete a specific car.
  ```
- * 👉 Edpoints of the person:
+ * 👉 Endpoints of the person:
  ```
- post -> ('/api/v1/person/) - Create a new person.
- get -> ('/api/v1/person/) - List all the persons.
- get -> ('/api/v1/person/:id) - List a specific person.
- put -> ('/api/v1/person/:id) - Update a specific person.
- delete -> ('/api/v1/person/:id) - Delete a specific person.
+ post -> ('/api/v1/person/') - Create a new person.
+ get -> ('/api/v1/person/') - List all the persons.
+ get -> ('/api/v1/person/:id') - List a specific person.
+ put -> ('/api/v1/person/:id') - Update a specific person.
+ delete -> ('/api/v1/person/:id') - Delete a specific person.
  ```
- * 👉 Edpoint of the authentificate:
+ * 👉 Endpoints of the authentificate:
  ```
- post -> ('/api/v1/autenticate/) - Verify a email and password.
+ post -> ('/api/v1/autenticate/') - Verify a email and password.
+ ```
+  * 👉 Endpoints of the rental:
+ ```
+ post -> ('/api/v1/rental/') - Create a new rental.
+ get -> ('/api/v1/rental/') - List all the rentals.
+ get -> ('/api/v1/rental/:id') - List a specific rental.
+ put -> ('/api/v1/rental/:id') - Update a specific rental.
+ delete -> ('/api/v1/rental/:id') - Delete a specific rental.
+ ```
+   * 👉 Endpoint of the Swagger document:
+ ```
+ use -> ('/api/v1/api-docs/') - Show all infos on the swagger document about the script.
  ```
 
-<h1 align=> 🖌️ API authors: </h1>
+<h1 align=> 🖌️ API author: </h1>
 
 * 👱‍♂️ **João Vítor Rech** - [Profile Link](https://github.com/TheJoaoRech)
