@@ -1,7 +1,7 @@
 const express = require('express');
 const RentalController = require('../app/controller/RentalController');
 const validateRental = require('../app/validations/Rental/validateRental');
-const updateRental = require('../app/validations/Rental/validateRental');
+const updateRental = require('../app/validations/Rental/updateRental');
 
 const router = express.Router();
 

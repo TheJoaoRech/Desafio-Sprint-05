@@ -16,8 +16,8 @@ class CarService {
 		return result; 
 	}
 
-	static async updateCar(id, payload) {
-		const result = await CarRepository.updateCar(payload, id);
+	static async updateCar(payload, reqBody) {
+		const result = await CarRepository.updateCar(payload, reqBody);
 		return result;
 	}
 

@@ -21,8 +21,8 @@ class CarRepository {
 		return await CarSchema.findById(payload);
 	}
 
-	static async updateCar(id, payload) {
-		return await CarSchema.findByIdAndUpdate(id, payload);
+	static async updateCar(payload, reqBody) {
+		return await CarSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deleteCar(payload) {

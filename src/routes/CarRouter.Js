@@ -1,7 +1,7 @@
 const express = require('express');
 const CarController = require('../app/controller/CarController');
 const validateCar = require('../app/validations/Car/validateCar');
-const updateCar = require('../app/validations/Car/validateCar');
+const updateCar = require('../app/validations/Car/updateCar');
 
 const router = express.Router();
 
