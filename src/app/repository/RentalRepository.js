@@ -29,8 +29,8 @@ class RentalRepository {
 		return await RentalSchema.findById(payload);
 	}
 
-	static async updateRental(id, payload) {
-		return await RentalSchema.findByIdAndUpdate(id, payload);
+	static async updateRental(payload, reqBody) {
+		return await RentalSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deleteRental(payload) {

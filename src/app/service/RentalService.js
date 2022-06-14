@@ -16,8 +16,8 @@ class RentalServices {
 		return result;
 	}
 
-	static async updateRental(id, payload) {
-		const result = await RentalRepository.updateRental(payload, id);
+	static async updateRental(payload, reqBody) {
+		const result = await RentalRepository.updateRental(payload, reqBody);
 		return result;
 	}
 
