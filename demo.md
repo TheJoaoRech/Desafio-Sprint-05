@@ -1,6 +1,6 @@
 <h1 align="center"> Some examples to test the code! 📜 </h1>
 
-## 👉 Create car example:
+## 👉 Create a car example:
 
 ```
 {
@@ -21,7 +21,7 @@
 }
 ```
 
-## 👉 Create person example:
+## 👉 Create a person example:
 
 ```
 {
@@ -43,3 +43,17 @@
 }
 ```
 
+## 👉 Create a rental example:
+
+```
+{
+  "name": "Localiza Rent a Car",
+  "cnpj": "16.670.085/0001-55",
+  "activities": "Aluguel de Carros E Gestão de Frotas",
+  "address": [{
+  "zipCode": "96200-200",
+  "number":"1234",
+  "isFilial": false
+}]
+}
+```
