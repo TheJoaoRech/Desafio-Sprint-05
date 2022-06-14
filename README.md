@@ -36,7 +36,8 @@
 "swagger-ui-express": "^4.4.0",
 "eslint": "^8.17.0",
 "nodemon": "^2.0.16",
-"supertest": "^6.2.3"
+"supertest": "^6.2.3",
+"jest": "^28.1.1"
 ```
 ### 🖼️ Frameworks:
 ```
@@ -58,7 +59,7 @@
 ### 3️⃣ - Now change the server settings:
 
     Rename the ".env.example" file to ".env", 
-    Now configure the file as you want
+    now configure the file as you want.
     
 ### 4️⃣ - Then run the server:
 
