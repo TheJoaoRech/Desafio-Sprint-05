@@ -18,6 +18,6 @@ module.exports = async (req, res, next) => {
 		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'};
 		return next();
 	} catch (error) {
-		return res.status(400).json(error);
+		return res.status(400).json({Error: error.message});
 	}
 };
