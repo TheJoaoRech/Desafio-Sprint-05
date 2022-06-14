@@ -21,8 +21,8 @@ class PersonRepository {
 		return await PersonSchema.findById(payload);
 	}
 
-	static async updatePerson(id, payload) {
-		return await PersonSchema.findByIdAndUpdate(id, payload);
+	static async updatePerson(payload, reqBody) {
+		return await PersonSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deletePerson(payload) {

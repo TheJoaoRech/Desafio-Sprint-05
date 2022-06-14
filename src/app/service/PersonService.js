@@ -21,8 +21,8 @@ class PersonService {
 		return result;
 	}
 
-	static async updatePerson(id, payload) {
-		const result = await PersonRepository.updatePerson(payload, id);
+	static async updatePerson(payload, reqBody) {
+		const result = await PersonRepository.updatePerson(payload, reqBody);
 		return result;
 	}
 
