@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 				.items({description: Joi.string().min(1).trim()}), 
 			passengersQtd: Joi.number().min(1)
 		});
-		const { error } = schemaCar.validate(req.body, { abortEarly: false});
+		const { error } = schemaCar.validate(req.body, { abortEarly: false });
 		if (error) throw error;
 		return next();
 	} catch (error) {
