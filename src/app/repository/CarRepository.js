@@ -6,24 +6,15 @@ class CarRepository {
 	}
     
 	static async list(payload) {
-		const paginate = {
-			totalDocs: 'total',
-			docs: 'vehicles',
-			page: 'offset',
-			totalPages: 'offsets',
-			nextPage: false,
-			prevPage: false,
-			pagingCounter: false,
-			meta: false,
-			hasPrevPage: false,
-			hasNextPage: false
+		const costumizePaginate = {totalDocs: 'total', docs: 'Vehicles', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false
 		};
+		const {limit = 100, offset = 0, ...query} = payload;  
 		const options = {
-			limit: 5,
-			offset: 1,
-			customLabels: paginate
+			limit: Number(limit),
+			offset: Number(offset),
+			customLabels: costumizePaginate
 		};
-		return await CarSchema.paginate(payload, {}); //Options Bugado.
+		return await CarSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
