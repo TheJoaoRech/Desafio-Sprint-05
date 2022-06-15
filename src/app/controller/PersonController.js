@@ -31,7 +31,7 @@ class PersonController {
 	static async update(req, res) {
 		try {
 			const result = await PersonService.updatePerson(req.params.id, req.body);
-			return res.status(204).json(result);
+			return res.status(200).json(result);
 		} catch (error) {
 			return res.status(400).json({Error: error.message});
 		}
