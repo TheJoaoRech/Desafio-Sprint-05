@@ -25,6 +25,11 @@ class CarRepository {
 		return await CarSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
+	static async updateAcessorieCar(idAcess, attDesc) {
+		const result = await CarSchema.findOneAndUpdate({ 'accessories._id': idAcess },{$set: {'accessories.$.description': attDesc.description}},{returnOriginal: false});
+		return await result;
+	}
+
 	static async deleteCar(payload) {
 		return await CarSchema.findByIdAndDelete(payload);
 	}

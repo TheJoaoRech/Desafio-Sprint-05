@@ -10,6 +10,7 @@ router
 	.get('/api/v1/car', CarController.list)
 	.get('/api/v1/car/:id', CarController.getById)
 	.put('/api/v1/car/:id', updateCar, CarController.update)
-	.delete('/api/v1/car/:id', CarController.delete);
+	.delete('/api/v1/car/:id', CarController.delete)
+	.patch('/api/v1/car/:id/accessories/:idAcess', CarController.updateAcessorieCar);
 
 module.exports = router;

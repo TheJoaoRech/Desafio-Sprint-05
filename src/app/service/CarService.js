@@ -21,10 +21,16 @@ class CarService {
 		return result;
 	}
 
+	static async updateAcessorieCar(idAcess, payload) {
+		const result = await CarRepository.updateAcessorieCar(idAcess, payload);
+		return result;
+	}
+
 	static async deleteCar(payload) {
 		const result = await CarRepository.deleteCar(payload);
 		return result;
 	}
+
 }
 
 module.exports = CarService; 
