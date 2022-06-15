@@ -10,9 +10,12 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/api/v1/"
+            "url": "http://localhost:3000"
         }],
+
 "paths": {
+
+
     "/api/v1/car": {
         "post": {
             "summary": "Create a new car.",
@@ -102,7 +105,28 @@
                 },
                 "404": {
                     "description": "Not found."
-                }}},
+                }}}},
+                "/api/v1/car/:id/accessories/:id": {
+                    "patch": {
+                        "summary": "Change the informations about a specific accessorie of the car.",
+                        "description": "Change the informations about a specific accessorie of the car registered on the system using his ID.",
+                        "tags": ["Car"],
+                        "parameters": [
+                            {
+                                "name": "ID",
+                                "in": "qurey",
+                                "description": "Change a information by the ID accessorie of the car.",
+                                "required": true,
+                                "schema": {
+                                    "type": "string"
+                                }}],
+                        "responses": {
+                            "201": {
+                                "description": "Return with the ID accessorie of the car." 
+                            },
+                            "404": {
+                                "description": "Not found."
+                            }}},
         "put": {
             "summary": "Update a specific car.",
             "description": "Update a specific car registered on the system using his ID.",
@@ -154,7 +178,9 @@
                 },
                 "404": {
                     "description": "Not found."
-                }}}},
+}}}},
+
+
     "/api/v1/person": {
         "post": {
             "summary": "Create a new person.",
@@ -265,7 +291,9 @@
                 },
                 "404": {
                     "description": "Not found."
-                }}}},
+}}}},
+
+
     "/api/v1/authenticate": {
             "post": {
                 "summary": "Verify a email and password.",
@@ -301,4 +329,223 @@
                                         }}}}}},
                     "400": {
                         "description": "Bad Request."
-}}}}}}
+}}}},
+
+
+"/api/v1/rental": {
+    "post": {
+        "summary": "Create a new rental.",
+        "description": "Create a new rental on the system.",
+        "tags": ["Rental"],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref":"#/components/schemas/RentalSchema"
+                    },
+                    "examples": {
+                        "Rental": {
+                            "value": {
+                                "name": "Localiza Rental Car",
+                                "cnpj": "16.670.085/0001-17",
+                                "activities": "Aluguel de Carros E Gestão de Frotas",
+                                "address": [
+                                    {
+                                        "zipCode": "96200-200",
+                                        "number":"1234",
+                                        "isFilial": false
+                                    }]}}}}}},
+            "responses": {
+            "201": {
+                "description": "Created."
+            },
+            "400": {
+                "description": "Bad Request."
+            }}},
+    "get": {
+        "summary": "List all the rentals.",
+        "description": "List all the rentals on the system.",
+        "tags": ["Rental"],
+        "responses": {
+            "200": {
+                "description": "OK."
+            },
+            "400": {
+                "description": "Bad Request."
+            }}}},
+
+    "/api/v1/rental/:id": {
+        "get": {
+            "summary": "List a specific rental.",
+            "description": "List a specific rental registered on the system using his ID.",
+            "tags": ["Rental"],
+            "parameters": [
+            {
+                "name": "ID",
+                "in": "qurey",
+                "description": "Search by the ID of the rental.",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }}],
+        "responses": {
+            "200": {
+                "description": "Return with the rental ID searched."
+            },
+            "404": {
+                "description": "Not found."
+            }}},
+    "put": {
+        "summary": "Update a specific rental.",
+        "description": "Update a specific rental registered on the system using his ID.",
+        "tags": ["Rental"],
+        "parameters": [
+            {
+                "name": "ID",
+                "in": "put",
+                "description": "Change any information by using the ID of the rental.",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }}],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref":"#/components/schemas/RentalSchema"
+                    },
+                    "examples": {
+                        "Rental": {
+                            "value": {
+                                "zipCode": "96200-201",
+                                "number":"4003"
+                            }}}}}},
+        "responses": {
+            "200": {
+                "description": "OK."
+            },
+            "404": {
+                "description": "Not found."
+            }}},
+    "delete": {
+        "summary": "Delete a specific rental.",
+        "description": "Delete a specific rental registered on the system by using his ID.",
+        "tags": ["Rental"],
+        "parameters": [{
+                "name": "ID",
+                "in": "put",
+                "description": "Delete all the informations by using the ID of the rental.",
+                "required": true,
+                "schema": {
+                "type": "string"
+                }}],
+        "responses": {
+            "204": {
+                "description": "No content."
+            },
+            "404": {
+                "description": "Not found."
+            }}}}},
+
+
+"components": {
+                "schemas": {
+                    "CarSchema": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "model": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "brand": {
+                                "type": "string"
+                            },
+                            "color": {
+                                "type": "string"
+                            },
+                            "year": {
+                                "type": "number"
+                            },
+                            "accessories": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string"
+                                        }}}},
+                            "passengersQtd": {
+                                "type": "number"
+                            }}},
+                    "PersonSchema": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },"name": {
+                                "type": "string"
+                            }, "cpf": {
+                                "type": "string"
+                            },"birthDay": {
+                                "type": "date"
+                            },"email": {
+                                "type": "string",
+                                "unique": true
+                            },"password": {
+                                "type": "string",
+                                "select": false
+                            },"canDrive": {
+                                "type": "string",
+                                "enum": {
+                                    "values": ["yes", "no"]
+                                }}}},
+                    "RentalSchema": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "cnpj": {
+                                "type": "string",
+                                "unique": true
+                            },
+                            "activities": {
+                                "type": "string"
+                            },
+                            "address": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "zipCode": {
+                                            "type": "string"
+                                        },
+                                        "street": {
+                                            "type": "string"
+                                        },
+                                        "complement": {
+                                            "type": "string"
+                                        },
+                                        "district": {
+                                            "type": "string"
+                                        },
+                                        "number": {
+                                            "type": "number"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "isFilial": {
+                                            "type": "boolean"
+}}}}}}}}}
