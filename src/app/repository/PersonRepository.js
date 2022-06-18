@@ -28,6 +28,10 @@ class PersonRepository {
 	static async deletePerson(payload) {
 		return await PersonSchema.findByIdAndDelete(payload);
 	}
+
+	static async auth(email) {
+		return await PersonSchema.findOne({ email }).select('+password');
+	}
 }
 
 module.exports = PersonRepository;
