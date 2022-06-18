@@ -52,6 +52,5 @@ PersonSchema.pre('save', async function (next) {
 
 PersonSchema.plugin(mongoosePaginate);
 const Person = mongoose.model('Person', PersonSchema);
-Person.paginate().then({});
 
 module.exports = Person;
