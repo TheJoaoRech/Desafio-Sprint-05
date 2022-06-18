@@ -1,6 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const birthDayValidate = require('../../../utils/birthDayValidate');
-const cpfValidation = require('../../../utils/cpfValidation');
+const birthDayValidate = require('../../utils/birthDayValidate');
+const cpfValidation = require('../../utils/cpfValidation');
 
 module.exports = async (req, res, next) => {
 	try{
