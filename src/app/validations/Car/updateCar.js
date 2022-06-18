@@ -2,6 +2,7 @@ const Joi = require('joi').extend(require('@joi/date'));
 
 module.exports = async (req, res, next) => {
 	try {
+
 		const schemaCar = Joi.object({
 			model: Joi.string().min(3).trim(), 
 			type: Joi.string().min(3).trim(),
@@ -15,6 +16,7 @@ module.exports = async (req, res, next) => {
 		const { error } = schemaCar.validate(req.body, { abortEarly: false });
 		if (error) throw error;
 		return next();
+		
 	} catch (error) {
 		return res.status(400).json(
 			error.details.map((detail) => ({
