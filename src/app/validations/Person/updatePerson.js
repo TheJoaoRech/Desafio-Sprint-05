@@ -1,10 +1,10 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const birthDayValidate = require('../../../utils/birthDayValidate');
-//const cpfValidation = require('../../../utils/cpfValidation');
+const cpfValidation = require('../../../utils/cpfValidation');
 
 module.exports = async (req, res, next) => {
 	try {
-		
+
 		const schemaPerson = Joi.object({
 
 			name: Joi.string().min(3).max(30).trim(),
@@ -15,11 +15,15 @@ module.exports = async (req, res, next) => {
 			canDrive: Joi.string().valid('yes', 'no')
 		});
 
+		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'};
 		const { error } = await schemaPerson.validate(req.body, { abortEarly: false });
 		if (error) throw error;
 		return next();
 		
 	} catch (error) {
+		if(error.details === undefined) {
+			return res.status(400).json({Error: error.message});
+		}
 		return res.status(400).json(
 			error.details.map((detail) => ({
 				name: detail.path.join(),
