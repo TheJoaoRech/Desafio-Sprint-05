@@ -1,26 +1,23 @@
-const Joi = require('joi');
-const moment = require('moment');
+const Joi = require('joi').extend(require('@joi/date'));
+const birthDayValidate = require('../../../utils/birthDayValidate');
 const cpfValidation = require('../../../utils/cpfValidation');
 
 module.exports = async (req, res, next) => {
+	try{
 
-	const schemaPerson = Joi.object({
+		const schemaPerson = Joi.object({
 			
-		name: Joi.string().min(3).max(30).required().trim(),
-		cpf: Joi.string().required().regex(/^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}/).message('Your CPF should only contain characters accepted by the system!'),
-		birthDay: Joi.date().required(),
-		email: Joi.string().min(10).required().email().lowercase().trim(),
-		password: Joi.string().min(6).required(),
-		canDrive: Joi.string().required().valid('yes', 'no')
-	});
+			name: Joi.string().min(3).max(30).required().trim(),
+			cpf: Joi.string().required().regex(/^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}/).message('Your CPF should only contain characters accepted by the system!'),
+			birthDay: Joi.date().format('DD/MM/YYYY').max(birthDayValidate()),
+			email: Joi.string().min(10).required().email().lowercase().trim(),
+			password: Joi.string().min(6).required(),
+			canDrive: Joi.string().required().valid('yes', 'no')
+		});
 
-	const reqBody = req.body;
-	const birthDay = moment(reqBody.birthDay, 'DD/MM/YYYY').format('YYYY/MM/DD');
-	const birthDayValidate = moment().diff(birthDay, 'years', false) < 18;
-	
-	try {
-		if (birthDayValidate) throw {message: 'Your birthDay is invalid!'};
-		await schemaPerson.validateAsync({...reqBody, birthDay});
+		const { error } = await schemaPerson.validate(req.body, { abortEarly: false });
+		if (error) throw error;
+
 		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'};
 		return next();
 
