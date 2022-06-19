@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
 			passengersQtd: Joi.number().required().min(1)
 		});
 
-		const { error } = schemaCar.validate(req.body, { abortEarly: false});
+		const { error } = await schemaCar.validate(req.body, { abortEarly: false});
 		if (error) throw error;
 		return next();
 		
