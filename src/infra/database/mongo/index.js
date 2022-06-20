@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../../../app/config/config');
+const config = require('../../../config/config');
 
 class Database {
 	constructor() {
@@ -7,8 +7,8 @@ class Database {
 	}
 
 	connect(){
-		return mongoose.connect(
-			`mongodb://${config.database.host}/${config.database.collection}`
+		return mongoose.connect( 
+			process.env.MONGO_URL ||`mongodb://${config.database.host}/${config.database.collection}`
 		);
 	}
 }
