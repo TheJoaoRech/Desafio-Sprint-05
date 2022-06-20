@@ -7,6 +7,7 @@
  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
+<img src=https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white/>
 </p>
 </br>
 
@@ -33,11 +34,19 @@
 "moment": "^2.29.3",
 "mongoose-paginate-v2": "^1.6.3",
 "moongose": "^1.0.0",
+"supertest": "^6.2.3",
 "swagger-ui-express": "^4.4.0",
 "eslint": "^8.17.0",
+"eslint-config-airbnb-base": "^15.0.0",
+"eslint-config-node": "^4.1.0",
+"eslint-config-plugin": "^1.0.11",
+"eslint-config-prettier": "^8.5.0",
+"eslint-plugin-import": "^2.26.0",
+"eslint-plugin-node": "^11.1.0",
+"eslint-plugin-prettier": "^4.0.0",
+"jest": "^28.1.1",
 "nodemon": "^2.0.16",
-"supertest": "^6.2.3",
-"jest": "^28.1.1"
+"prettier": "^2.7.1"
 ```
 ### 🖼️ Frameworks:
 ```
@@ -95,11 +104,32 @@
  put -> ('/api/v1/rental/:id') - Update a specific rental.
  delete -> ('/api/v1/rental/:id') - Delete a specific rental.
  ```
-   * 👉 Endpoint of the Swagger document:
+  * 👉 Endpoints of the reserve:
+ ```
+ post -> ('/api/v1/rental/:id_rental/reserve') - Create a new reserve.
+ get -> ('/api/v1/rental/:id_rental/reserve') - List all the reserves.
+ get -> ('/api/v1/rental/:id_rental/reserve/:id') - List a specific reserve.
+ put -> ('/api/v1/rental/:id_rental/reserve/:id') - Update a specific reserve.
+ delete -> ('/api/v1/rental/:id_rental/reserve/:id') - Delete a specific reserve.
+ ```
+   * 👉 Endpoints of the fleet:
+ ```
+ post -> ('/api/v1/rental/:id_rental/fleet') - Create a new fleet.
+ get -> ('/api/v1/rental/:id_rental/fleet') - List all the flets.
+ get -> ('/api/v1/rental/:id_rental/fleet/:id') - List a specific fleet.
+ put -> ('/api/v1/rental/:id_rental/fleet/:id) - Update a specific fleet.
+ delete -> ('/api/v1/rental/:id_rental/fleet/:id') - Delete a specific fleet.
+ ```
+   * 👉 Endpoints of the Swagger document:
  ```
  use -> ('/api/v1/api-docs/') - Show all infos on the swagger document about the script.
  ```
-
+ <h1 align> ⭐ Some useful things about the code: </h1>
+ 
+ ### 🦸 - You can access the application from this Heroku URL: https://apisprint05.herokuapp.com/
+ ### 🧪 - You can test the code using the `npm test` command. (The JEST tool was used to perform this feature)
+ 
+ 
 <h1 align=> 🖌️ API author: </h1>
 
 * 👱‍♂️ **João Vítor Rech** - [Profile Link](https://github.com/TheJoaoRech)
