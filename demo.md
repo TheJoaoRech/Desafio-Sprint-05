@@ -57,3 +57,28 @@
 }]
 }
 ```
+
+## 👉 Create a reserve example:
+
+```
+{
+  "id_user": "Put here the user ID created earlier",
+  "data_start": "20/11/2021",
+  "data_end": "30/11/2021",
+  "id_car": "Put here the car ID created earlier",
+  "id_rental": "Put here the rental ID created earlier",
+  "final_value": "500,00",
+}
+```
+
+## 👉 Create a fleet example:
+
+```
+{
+  "id_car": "Put here the car ID created earlier",
+  "id_rental":"Put here the rental ID created earlier",
+  "status": "available",
+  "daily_value": "100,00",
+  "plate": "ABC1234",
+}
+````
