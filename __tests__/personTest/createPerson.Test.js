@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const request = require('supertest');
-const app = require('../../../src/app');
+const app = require('../../src/app');
 
 describe('Create a person',() => {
 	it('Create a person for test!', async () => {
