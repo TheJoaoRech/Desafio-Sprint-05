@@ -445,8 +445,237 @@
             },
             "404": {
                 "description": "Not found."
-            }}}}},
+                }}}},
 
+
+            "/api/v1/rental/:id_rental/reserve": {
+                "post": {
+                    "summary": "Create a new reserve.",
+                    "description": "Create a new reserve on the system.",
+                    "tags": ["Reserve"],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref":"#/components/schemas/ReserveSchema"
+                                },
+                                "examples": {
+                                    "Reserve": {
+                                        "value": {
+                                            "id_user": "Put here the user ID created earlier",
+                                            "data_start": "20/11/2021",
+                                            "data_end": "30/11/2021",
+                                            "id_car": "Put here the car ID created earlier",
+                                            "id_rental": "Put here the rental ID created earlier",
+                                            "final_value": "500,00"
+                                          }}}}}},
+                        "responses": {
+                        "201": {
+                            "description": "Created."
+                        },
+                        "400": {
+                            "description": "Bad Request."
+                        }}},
+                "get": {
+                    "summary": "List all the reserves.",
+                    "description": "List all the reserve on the system.",
+                    "tags": ["Reserve"],
+                    "responses": {
+                        "200": {
+                            "description": "OK."
+                        },
+                        "400": {
+                            "description": "Bad Request."
+                        }}}},
+
+                "/api/v1/rental/:id_rental/reserve/:id": {
+                    "get": {
+                        "summary": "List a specific reserve.",
+                        "description": "List a specific reserve registered on the system using his ID.",
+                        "tags": ["Reserve"],
+                        "parameters": [
+                        {
+                            "name": "ID",
+                            "in": "qurey",
+                            "description": "Search by the ID of the reserve.",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }}],
+                    "responses": {
+                        "200": {
+                            "description": "Return with the reserve ID searched."
+                        },
+                        "404": {
+                            "description": "Not found."
+                        }}},
+                "put": {
+                    "summary": "Update a specific reserve.",
+                    "description": "Update a specific reserve registered on the system using his ID.",
+                    "tags": ["Reserve"],
+                    "parameters": [
+                        {
+                            "name": "ID",
+                            "in": "put",
+                            "description": "Change any information by using the ID of the reserve.",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }}],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref":"#/components/schemas/ReserveSchema"
+                                },
+                                "examples": {
+                                    "Reserve": {
+                                        "value": {
+                                            "data_start": "20/11/2021",
+                                            "data_end": "30/11/2021"
+                                        }}}}}},
+                    "responses": {
+                        "200": {
+                            "description": "OK."
+                        },
+                        "404": {
+                            "description": "Not found."
+                        }}},
+                "delete": {
+                    "summary": "Delete a specific reserve.",
+                    "description": "Delete a specific reserve registered on the system by using his ID.",
+                    "tags": ["Reserve"],
+                    "parameters": [{
+                            "name": "ID",
+                            "in": "put",
+                            "description": "Delete all the informations by using the ID of the reserve.",
+                            "required": true,
+                            "schema": {
+                            "type": "string"
+                            }}],
+                    "responses": {
+                        "204": {
+                            "description": "No content."
+                        },
+                        "404": {
+                            "description": "Not found."
+                            }}}},
+
+
+
+
+    
+                            "/api/v1/rental/:id_rental/fleet": {
+                                "post": {
+                                    "summary": "Create a new fleet.",
+                                    "description": "Create a new fleet on the system.",
+                                    "tags": ["Fleet"],
+                                    "requestBody": {
+                                        "content": {
+                                            "application/json": {
+                                                "schema": {
+                                                    "$ref":"#/components/schemas/FleetSchema"
+                                                },
+                                                "examples": {
+                                                    "Fleet": {
+                                                        "value": {
+                                                            "id_car": "Put here the car ID created earlier",
+                                                            "id_rental":"Put here the rental ID created earlier",
+                                                            "status": "available",
+                                                            "daily_value": "100,00",
+                                                            "plate": "ABC1234"
+                                                          }}}}}},
+                                        "responses": {
+                                        "201": {
+                                            "description": "Created."
+                                        },
+                                        "400": {
+                                            "description": "Bad Request."
+                                        }}},
+                                "get": {
+                                    "summary": "List all the fleets.",
+                                    "description": "List all the fleets on the system.",
+                                    "tags": ["Fleet"],
+                                    "responses": {
+                                        "200": {
+                                            "description": "OK."
+                                        },
+                                        "400": {
+                                            "description": "Bad Request."
+                                        }}}},
+                            
+                                "/api/v1/rental/:id_rental/fleet/:id": {
+                                    "get": {
+                                        "summary": "List a specific fleet.",
+                                        "description": "List a specific fleet registered on the system using his ID.",
+                                        "tags": ["Fleet"],
+                                        "parameters": [
+                                        {
+                                            "name": "ID",
+                                            "in": "qurey",
+                                            "description": "Search by the ID of the fleet.",
+                                            "required": true,
+                                            "schema": {
+                                                "type": "string"
+                                            }}],
+                                    "responses": {
+                                        "200": {
+                                            "description": "Return with the fleet ID searched."
+                                        },
+                                        "404": {
+                                            "description": "Not found."
+                                        }}},
+                                "put": {
+                                    "summary": "Update a specific fleet.",
+                                    "description": "Update a specific fleet registered on the system using his ID.",
+                                    "tags": ["Fleet"],
+                                    "parameters": [
+                                        {
+                                            "name": "ID",
+                                            "in": "put",
+                                            "description": "Change any information by using the ID of the fleet.",
+                                            "required": true,
+                                            "schema": {
+                                                "type": "string"
+                                            }}],
+                                    "requestBody": {
+                                        "content": {
+                                            "application/json": {
+                                                "schema": {
+                                                    "$ref":"#/components/schemas/ReserveSchema"
+                                                },
+                                                "examples": {
+                                                    "Fleet": {
+                                                        "value": {
+                                                            "status": "available",
+                                                            "daily_value": "100,00"
+                                                        }}}}}},
+                                    "responses": {
+                                        "200": {
+                                            "description": "OK."
+                                        },
+                                        "404": {
+                                            "description": "Not found."
+                                        }}},
+                                "delete": {
+                                    "summary": "Delete a specific fleet.",
+                                    "description": "Delete a specific fleet registered on the system by using his ID.",
+                                    "tags": ["Fleet"],
+                                    "parameters": [{
+                                            "name": "ID",
+                                            "in": "put",
+                                            "description": "Delete all the informations by using the ID of the fleet.",
+                                            "required": true,
+                                            "schema": {
+                                            "type": "string"
+                                            }}],
+                                    "responses": {
+                                        "204": {
+                                            "description": "No content."
+                                        },
+                                        "404": {
+                                            "description": "Not found."
+                                            }}}}},                        
 
 "components": {
                 "schemas": {
@@ -548,4 +777,45 @@
                                         },
                                         "isFilial": {
                                             "type": "boolean"
-}}}}}}}}}
+}}}}}},
+"ReserveSchema": {
+    "type": "object",
+    "properties": {
+        "id_user": {
+            "type": "type: mongoose.Schema.Types.ObjectId"
+        },
+        "data_start": {
+            "type": "string"
+        },
+        "data_end": {
+            "type": "string"
+        },
+        "id_car": {
+            "type": "type: mongoose.Schema.Types.ObjectId"
+        },
+        "id_rental": {
+            "type": "type: mongoose.Schema.Types.ObjectId"
+        },
+        "final_value": {
+            "type": "number"
+        }
+}},
+"FleetSchema": {
+    "type": "object",
+    "properties": {
+        "id_car": {
+            "type": "mongoose.Schema.Types.ObjectId"
+        },
+        "id_rental": {
+            "type": "mongoose.Schema.Types.ObjectId"
+        },
+        "status": {
+            "type": "string"
+        },
+        "daily_value": {
+            "type": "number"
+        },
+        "plate": {
+            "type": "string"
+        }
+}}}}}
