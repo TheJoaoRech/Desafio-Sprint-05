@@ -1,3 +1,4 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
 const CarSchema = require('../schema/CarSchema');
 
 class CarRepository {
