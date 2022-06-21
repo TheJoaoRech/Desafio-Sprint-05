@@ -1,10 +1,10 @@
 const express = require('express');
 const CarController = require('../app/controller/CarController');
+const authToken = require('../app/middlewares/authToken');
 const validateCar = require('../app/validations/Car/validateCar');
 const updateCar = require('../app/validations/Car/updateCar');
 const getCar = require('../app/validations/Car/getCar');
 const deleteCar = require('../app/validations/Car/deleteCar');
-const authToken = require('../app/middlewares/authToken');
 
 const router = express.Router();
 
