@@ -6,7 +6,7 @@ class ReserveService {
 		const {id_user} = payload;
 		const user = await PersonRepository.getById(id_user);
 		if (user.canDrive !== 'yes') {throw new Error('This user cannot drive!');}
-		return await ReserveRepository.create(payload);
+		return ReserveRepository.create(payload);
 	}
 
 	static async list(payload) {
