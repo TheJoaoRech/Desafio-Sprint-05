@@ -2,7 +2,7 @@ const ReserveSchema = require('../schema/ReserveSchema');
 
 class ReserveRepository {
 	static async create(payload) {
-		return await ReserveSchema.create(payload);
+		return  ReserveSchema.create(payload);
 	}
 
 	static async list(payload) {
@@ -14,19 +14,19 @@ class ReserveRepository {
 			offset: Number(offset),
 			customLabels: costumizePaginate
 		};
-		return await ReserveSchema.paginate(query, options);
+		return  ReserveSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
-		return await ReserveSchema.findById(payload);
+		return  ReserveSchema.findById(payload);
 	}
 
 	static async updateReserve(payload, reqBody) {
-		return await ReserveSchema.findByIdAndUpdate(payload, reqBody);
+		return  ReserveSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deleteReserve(payload) {
-		return await ReserveSchema.findByIdAndDelete(payload);
+		return  ReserveSchema.findByIdAndDelete(payload);
 	}
 }
 

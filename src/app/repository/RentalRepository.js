@@ -10,7 +10,7 @@ class RentalRepository {
 			payload.address[dado].city = localidade;
 			payload.address[dado].state = uf;
 		}
-		return await RentalSchema.create(payload);
+		return  RentalSchema.create(payload);
 	}
 
 	static async list(payload) {
@@ -22,19 +22,19 @@ class RentalRepository {
 			offset: Number(offset),
 			customLabels: costumizePaginate
 		};
-		return await RentalSchema.paginate(query, options);
+		return  RentalSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
-		return await RentalSchema.findById(payload);
+		return  RentalSchema.findById(payload);
 	}
 
 	static async updateRental(payload, reqBody) {
-		return await RentalSchema.findByIdAndUpdate(payload, reqBody);
+		return  RentalSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deleteRental(payload) {
-		return await RentalSchema.findByIdAndDelete(payload);
+		return  RentalSchema.findByIdAndDelete(payload);
 	}
 }
 

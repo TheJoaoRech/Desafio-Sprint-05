@@ -2,7 +2,7 @@ const PersonSchema = require('../schema/PersonSchema');
 
 class PersonRepository {
 	static async create(payload) {
-		return await PersonSchema.create(payload);
+		return  PersonSchema.create(payload);
 	}
     
 	static async list(payload) {
@@ -14,23 +14,23 @@ class PersonRepository {
 			offset: Number(offset),
 			customLabels: costumizePaginate
 		};
-		return await PersonSchema.paginate(query, options);
+		return  PersonSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
-		return await PersonSchema.findById(payload);
+		return  PersonSchema.findById(payload);
 	}
 
 	static async updatePerson(payload, reqBody) {
-		return await PersonSchema.findByIdAndUpdate(payload, reqBody);
+		return  PersonSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deletePerson(payload) {
-		return await PersonSchema.findByIdAndDelete(payload);
+		return  PersonSchema.findByIdAndDelete(payload);
 	}
 
 	static async auth(email) {
-		return await PersonSchema.findOne({ email }).select('+password');
+		return  PersonSchema.findOne({ email }).select('+password');
 	}
 }
 

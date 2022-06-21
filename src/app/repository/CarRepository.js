@@ -2,7 +2,7 @@ const CarSchema = require('../schema/CarSchema');
 
 class CarRepository {
 	static async create(payload){
-		return await CarSchema.create(payload);
+		return  CarSchema.create(payload);
 	}
     
 	static async list(payload) {
@@ -14,24 +14,24 @@ class CarRepository {
 			offset: Number(offset),
 			customLabels: costumizePaginate
 		};
-		return await CarSchema.paginate(query, options);
+		return  CarSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
-		return await CarSchema.findById(payload);
+		return  CarSchema.findById(payload);
 	}
 
 	static async updateCar(payload, reqBody) {
-		return await CarSchema.findByIdAndUpdate(payload, reqBody);
+		return  CarSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async updateAcessorieCar(idAcess, attDesc) {
 		const result = await CarSchema.findOneAndUpdate({ 'accessories._id': idAcess },{$set: {'accessories.$.description': attDesc.description}},{returnOriginal: false});
-		return await result;
+		return  result;
 	}
 
 	static async deleteCar(payload) {
-		return await CarSchema.findByIdAndDelete(payload);
+		return  CarSchema.findByIdAndDelete(payload);
 	}
 }
 

@@ -2,7 +2,7 @@ const FleetSchema = require('../schema/FleetSchema');
 
 class FleetRepository {
 	static async create(payload) {
-		return await FleetSchema.create(payload);
+		return  FleetSchema.create(payload);
 	}
 
 	static async list(payload) {
@@ -14,19 +14,19 @@ class FleetRepository {
 			offset: Number(offset),
 			customLabels: costumizePaginate
 		};
-		return await FleetSchema.paginate(query, options);
+		return  FleetSchema.paginate(query, options);
 	}
 
 	static async getById(payload) {
-		return await FleetSchema.findById(payload);
+		return  FleetSchema.findById(payload);
 	}
 
 	static async updateFleet(payload, reqBody) {
-		return await FleetSchema.findByIdAndUpdate(payload, reqBody);
+		return  FleetSchema.findByIdAndUpdate(payload, reqBody);
 	}
 
 	static async deleteFleet(payload) {
-		return await FleetSchema.findByIdAndDelete(payload);
+		return  FleetSchema.findByIdAndDelete(payload);
 	}
 }
 
