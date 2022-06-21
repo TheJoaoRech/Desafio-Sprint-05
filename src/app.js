@@ -1,6 +1,5 @@
 const express = require('express');
 const router = require('./routes');
-
 require('./infra/database/mongo');
 
 class App {
@@ -9,9 +8,11 @@ class App {
 		this.middlewares();
 		this.routes();
 	}
+
 	middlewares() {
 		this.server.use(express.json());
 	}
+
 	routes() {
 		router(this.server);
 	}
