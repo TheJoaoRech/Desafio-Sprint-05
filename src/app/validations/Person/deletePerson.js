@@ -1,5 +1,5 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const birthDayValidate = require('../../../app/utils/birthDayValidate');
+const birthDayValidate = require('../../utils/birthDayValidate');
 
 module.exports = async (req, res, next) => {
 	try {

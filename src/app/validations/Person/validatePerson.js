@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
 			canDrive: Joi.string().required().valid('yes', 'no')
 		});
 
-		if(!cpfValidation(req.body.cpf)) throw {message: 'Your CPF is invalid!'};
+		if(!cpfValidation(req.body.cpf)) throw new Error ('Your CPF is invalid!');
 		const { error } = await schemaPerson.validate(req.body, { abortEarly: false });
 		if (error) throw error;
 		return next();
