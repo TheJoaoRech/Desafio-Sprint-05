@@ -6,7 +6,8 @@ class CarController {
 			const result = await CarService.create(req.body);
 			return res.status(201).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
 
@@ -15,7 +16,8 @@ class CarController {
 			const result = await CarService.list(req.query);
 			return res.status(200).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
 
@@ -24,7 +26,8 @@ class CarController {
 			const result = await CarService.getById(req.params.id);
 			return res.status(200).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
 
@@ -33,7 +36,8 @@ class CarController {
 			const result = await CarService.updateCar(req.params.id, req.body);
 			return res.status(200).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
 
@@ -44,7 +48,8 @@ class CarController {
 			const result = await CarService.updateAcessorieCar(idAcess, reqBody);
 			return res.status(200).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
     
@@ -53,7 +58,8 @@ class CarController {
 			const result = await CarService.deleteCar(req.params.id);
 			return res.status(204).json(result);
 		} catch (error) {
-			return;
+			return res.status(error.status || 400).json(
+				{ Error: error.name, Description: error.description });
 		}
 	}
 }
