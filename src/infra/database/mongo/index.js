@@ -1,21 +1,13 @@
+/* eslint-disable node/no-extraneous-require */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+
 const mongoose = require('mongoose');
 const config = require('../../../config/config');
 require('dotenv').config();
 
-class Database {
-	constructor() {
-		this.connect();
-	}
+mongoose.connect(process.env.MONGO_URL);
 
-	connect(){
-		return mongoose.connect( 
-			`mongodb+srv://admin:admin@cluster0.yeahbf8.mongodb.net/?retryWrites=true&w=majority`
-		);
-	}
-	
-	disconnect() {
-		return mongoose.connection.close();
-	}
+const db = mongoose.connection;
 
-}
-module.exports = new Database().connect();
+module.exports = db;

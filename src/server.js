@@ -1,5 +1,9 @@
-const app = require('./app');
+/* eslint-disable no-console */
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log ('The server is running on port 3000!');
+const app = require('./app');
+require('dotenv').config();
+
+const port = process.env.PORT || 3000;
+
+app.listen(port , () => {console.log(`The server is running on port: ${port}!`);
 });
