@@ -1,3 +1,5 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
+/* eslint-disable camelcase */
 const ReserveService = require('../service/ReserveService');
 
 class ReserveController {
@@ -13,10 +15,13 @@ class ReserveController {
 
 	static async list(req, res) {
 		try {
-			const result = await ReserveService.list(req.query);
-			return res.status(200).json(result);
+			const {id_rental} = req.params;
+			const reqQuery = req.query;
+			const list = await ReserveService.list(
+				{ ...reqQuery, id_rental: String(id_rental) });
+			res.status(200).json(list);
 		} catch (error) {
-			return res.status(error.status || 400).json(
+			res.status(400).json(
 				{ Error: error.name, Description: error.description });
 		}
 	}

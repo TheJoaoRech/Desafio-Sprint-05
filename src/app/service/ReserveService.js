@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 const ReserveRepository = require('../repository/ReserveRepository');
 const PersonRepository = require('../repository/PersonRepository');
+const RentalRepository = require('../repository/RentalRepository');
 
 class ReserveService {
 	static async create(payload) {
@@ -10,8 +12,10 @@ class ReserveService {
 	}
 
 	static async list(payload) {
-		const result = await ReserveRepository.list(payload);
-		return result;
+		const {id_rental} = payload;
+		const rental = await RentalRepository.getById(id_rental);
+		if (!rental) throw new Error;
+		return ReserveRepository.list(payload);
 	}
 
 	static async getById(payload) {
