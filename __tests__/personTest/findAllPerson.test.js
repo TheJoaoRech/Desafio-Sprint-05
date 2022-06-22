@@ -12,8 +12,10 @@ describe('Create a person',() => {
 			password: '123456',
 			canDrive: 'yes'
 		};
-		const response = await request(app).post('/api/v1/person/').send(person);
+		await request(app).post('/api/v1/person/').send(person);
+		const response = await request(app).get('/api/v1/person');
 		const {status} = response;
-		expect(status).toBe(201);
-	});
-});
+		const {all} = response.body;
+		expect(all).toBe(1);
+		expect(status).toBe(200);
+	});});
