@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 const FleetRepository = require('../repository/FleetRepository');
+const RentalRepository = require('../repository/RentalRepository');
 
 class FleetService {
 	static async create(payload) {
@@ -8,6 +10,9 @@ class FleetService {
 
 	static async list(payload) {
 		const result = await FleetRepository.list(payload);
+		const {id_rental} = payload;
+		const rental = await RentalRepository.getById(id_rental);
+		if (!rental) throw new Error;
 		return result;
 	}
 
