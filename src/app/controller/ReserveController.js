@@ -1,5 +1,3 @@
-/* eslint-disable node/no-unsupported-features/es-syntax */
-/* eslint-disable camelcase */
 const ReserveService = require('../service/ReserveService');
 
 class ReserveController {

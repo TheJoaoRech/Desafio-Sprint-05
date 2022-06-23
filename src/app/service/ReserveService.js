@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const ReserveRepository = require('../repository/ReserveRepository');
 const PersonRepository = require('../repository/PersonRepository');
 const RentalRepository = require('../repository/RentalRepository');

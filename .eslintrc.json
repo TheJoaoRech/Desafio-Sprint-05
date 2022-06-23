@@ -14,6 +14,26 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "camelcase": "off",
+        "consistent-return": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/order": "off",
+        "no-plusplus": "off",
+        "no-await-in-loop": "off",
+        "eqeqeq": "off",
+        "radix": "off",
+        "no-unused-vars": "off",
+        "node/no-extraneous-require": "off",
+        "node/no-unsupported-features/es-syntax": "off",
+        "no-param-reassign": "off",
+        "no-shadow":"off",
+        "class-methods-use-this": "off",
+        "no-throw-literal": 0,
+        "func-names": "off",
+        "no-process-exit": "off",
+        "object-shorthand": "off",
+        "no-console": "off",
+
         "indent": [
             "error",
             "tab"

@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const app = require('./app');
 require('dotenv').config();
 

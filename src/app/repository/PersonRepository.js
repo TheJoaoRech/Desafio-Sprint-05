@@ -1,4 +1,3 @@
-/* eslint-disable node/no-unsupported-features/es-syntax */
 const PersonSchema = require('../schema/PersonSchema');
 
 class PersonRepository {

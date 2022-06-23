@@ -1,8 +1,3 @@
-/* eslint-disable import/order */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-param-reassign */
-/* eslint-disable node/no-unsupported-features/es-syntax */
 const RentalSchema = require('../schema/RentalSchema');
 const axios = require('axios').default;
 
