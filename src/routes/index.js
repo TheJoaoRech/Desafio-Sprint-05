@@ -7,13 +7,13 @@ const ReserveRouter = require('./ReserveRouter');
 const FleetRouter = require('./FleetRouter');
 
 const routes = (app) => {
-	app.use(PersonRouter);
-	app.use(CarRouter);
-	app.use(AuthenticateRouter);
-	app.use(RentalRouter);
-	app.use(SwaggerRouter);
-	app.use(ReserveRouter);
-	app.use(FleetRouter);
+  app.use(PersonRouter);
+  app.use(CarRouter);
+  app.use(AuthenticateRouter);
+  app.use(RentalRouter);
+  app.use(SwaggerRouter);
+  app.use(ReserveRouter);
+  app.use(FleetRouter);
 };
 
 module.exports = routes;

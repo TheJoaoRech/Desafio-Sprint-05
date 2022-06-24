@@ -1,18 +1,17 @@
-
 module.exports = {
-  
-	bail: true,
 
-	clearMocks: true,
+  bail: true,
 
-	collectCoverage: true,
+  clearMocks: true,
 
-	coverageDirectory: '__tests__/integration',
+  collectCoverage: true,
 
-	coverageProvider: 'v8',
+  coverageDirectory: '__tests__/integration',
 
-	testEnvironment: 'node',
+  coverageProvider: 'v8',
 
-	testMatch: ['**/__tests__/**/*.test.js?(x)'],
+  testEnvironment: 'node',
+
+  testMatch: ['**/__tests__/**/*.test.js?(x)'],
 
 };

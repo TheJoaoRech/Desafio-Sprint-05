@@ -9,11 +9,11 @@ const deleteCar = require('../app/validations/Car/deleteCar');
 const router = express.Router();
 
 router
-	.post('/api/v1/car', authToken, validateCar, CarController.create)
-	.get('/api/v1/car', authToken, getCar, CarController.list)
-	.get('/api/v1/car/:id', authToken, getCar, CarController.getById)
-	.put('/api/v1/car/:id', authToken, updateCar, CarController.update)
-	.delete('/api/v1/car/:id', authToken, deleteCar, CarController.delete)
-	.patch('/api/v1/car/:id/accessories/:idAcess', authToken, CarController.updateAcessorieCar);
+  .post('/api/v1/car', authToken, validateCar, CarController.create)
+  .get('/api/v1/car', authToken, getCar, CarController.list)
+  .get('/api/v1/car/:id', authToken, getCar, CarController.getById)
+  .put('/api/v1/car/:id', authToken, updateCar, CarController.update)
+  .delete('/api/v1/car/:id', authToken, deleteCar, CarController.delete)
+  .patch('/api/v1/car/:id/accessories/:idAcess', authToken, CarController.updateAcessorieCar);
 
 module.exports = router;
