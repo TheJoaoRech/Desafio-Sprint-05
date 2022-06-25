@@ -1,805 +1,1226 @@
 {
-"openapi": "3.0.1",
-"info": {
-    "title": "API SPRINT 5: Renpass.uol - FINAL CHALLENGE",
-    "description": "Creating an API for a rental company that operates in the car segment!",
-    "contact": {"email": "joaooliveirarech@hotmail.com"},
-    "version": "1.0.0"},
-    "servers": [{"url": "http://localhost:3000"}],
-"paths": {
-"/api/v1/car": {    
+    "openapi": "3.0.1",
+    "info": {
+      "title": "API SPRINT 5: Renpass.uol - FINAL CHALLENGE",
+      "description": "Creating an API for a rental company that operates in the car segment!",
+      "contact": {
+        "email": "joaooliveirarech@hotmail.com"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/api/v1/car": {
         "post": {
-            "summary": "Create a new car.",
-            "description": "Create a new car on the system.",
-            "tags": ["Car"],
-            "security": [{"bearerAuth": []}],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {"$ref":"#/components/schemas/CarSchema"},
-                        "examples": {
-                            "car": {
-                                "value": {
-                                    "model": "S10 3.0",
-                                    "type": "sedan",
-                                    "brand": "GM",
-                                    "color": "branco",
-                                    "year": "2021",
-                                    "accessories": [
-                                        {
-                                            "description": "Ar-condicionado"
-                                        },
-                                        {
-                                            "description": "Dir. Hidráulica"
-                                        }
-                                        ],
-                                    "passengersQtd": 5            
-                                }}}}}},
-            "responses": {
-                "201": {
-                    "description": "Created."
-                },
-                "400": {
-                    "description": "Bad Request."
-                }}},
-        "get": {
-            "summary": "List all the cars on the system or only one specified by a defined parameter.",
-            "description": "If you just use the GET method the code will return all the cars registered in the database, but if you want, just define one of the parameters in the search to return a specific result, below are those accepted by the system.",
-            "tags": ["Car"],
-            "security": [{"bearerAuth": []}],
-            "parameters": [{
-                "name": "Model",
-                "in": "query",
-                "description": "Specific search by car model registered.",
-                "schema": {"type": "string"}
-            },{
-                "name": "Type",
-                "in": "query",
-                "description": "Specific search by car type registered.",
-                "schema": {"type": "string"}
-            },{
-                "name": "Brand",
-                "in": "query",
-                "description": "Specific search by car brand registered.",
-                "schema": {"type": "string"}
-            },{
-                "name": "Color",
-                "in": "query",
-                "description": "Specific search by car color registered.",
-                "schema": {"type": "string"}
-            },{
-                "name": "Year",
-                "in": "query",
-                "description": "Specific search by car year registered.",
-                "schema": {"type": "string"}
-            },{
-                "name": "PassengersQtd",
-                "in": "query",
-                "description": "Specific search by number of passengers in the car's registered.",
-                "schema": {"type": "string"}
-            }],
-            "responses": {
-                "200": {
-                    "description": "Return with the searched parameters." 
-}}}},
-"/api/v1/car/{id}": {
-        "get": {
-            "summary": "List a specific car.",
-            "description": "List a specific car registered on the system using his id.",
-            "tags": ["Car"],
-            "security": [{"bearerAuth": []}],
-            "parameters": [
-                {
-                  "name": "id",
-                  "in": "path",
-                  "description": "Search for a car for his ID",
-                  "required": true,
-                  "schema": {
-                    "type": "string"
-                  }}],
-                    "responses": {
-                        "200": {
-                          "description": "Good Request",
-                          "content": {
-                            "application/json": {
-                              "schema": {
-                                "type": "array",
-                                "items": {
-                                  "$ref": "#/components/schemas/CarSchema"
-                                }}}}},
-                "404": {
-                    "description": "Not found."
-                }}},
-        "put": {
-            "summary": "Update a specific car.",
-            "description": "Update a specific car registered on the system using his id.",
-            "tags": ["Car"],
-            "security": [{"bearerAuth": []}],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "Change any information by using the id of the car.",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    }}],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {"$ref":"#/components/schemas/CarSchema"},
-                        "examples": {
-                            "car": {
-                                "value": {
-                                    "color": "vermelho",
-                                    "year": "2022"            
-                                }}}}}},
-            "responses": {
-                "200": {
-                    "description": "OK."
-                },
-                "404": {
-                    "description": "Not found."
-                }}},
-        "delete": {
-            "summary": "Delete a specific car.",
-            "description": "Delete a specific car registered on the system by using his id.",
-            "tags": ["Car"],
-            "security": [{"bearerAuth": []}],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "Delete all the informations by using the id of the car.",
-                    "required": true,
-                    "schema": {"type": "string"}}],
-            "responses": {
-                "204": {
-                    "description": "No content."
-                },
-                "404": {
-                    "description": "Not found."
-}}}},
-"/api/v1/car/{id}/accessories/{id}": {
-    "patch": {
-        "summary": "Update a car accessory by id",
-        "description": "This route will select the accessory and update it",
-        "tags": ["Car"],
-        "security": [{"bearerAuth": []}],
-        "parameters": [
+          "summary": "Create a new car.",
+          "description": "Create a new car on the system.",
+          "tags": [
+            "Car"
+          ],
+          "security": [
             {
-                "name": "id",
-                "in": "path",
-                "description": "Delete all the informations by using the id of the car.",
-                "required": true,
-                "schema": {"type": "string"}}],
-        "responses": {
-            "204": {
-                "description": "No content."
-            },
-            "404": {
-                "description": "Not found."
-}}}},
-"/api/v1/person": {
-        "post": {
-            "summary": "Create a new person.",
-            "description": "Create a new person on the system.",
-            "tags": ["Person"],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":"#/components/schemas/PersonSchema"
-                        },
-                        "examples": {
-                            "person": {
-                                "value": {
-                                    "name": "João Lopes",
-                                    "cpf": "131.147.860-49",
-                                    "birthDay": "03/03/1998",
-                                    "email": "joazinho@email.com",
-                                    "password": "123456",
-                                    "canDrive": "yes"
-                                  }}}}}},
-            "responses": {
-                "201": {
-                    "description": "Created."
-                },
-                "400": {
-                    "description": "Bad Request."
-                }}},
-        "get": {
-            "summary": "List all the persons.",
-            "description": "List all the persons on the system.",
-            "tags": ["Person"],
-            "responses": {
-                "200": {
-                    "description": "OK."
-                },
-                "400": {
-                    "description": "Bad Request."
-}}}},
-"/api/v1/person/{id}": {
-        "get": {
-            "summary": "List a specific person.",
-            "description": "List a specific person registered on the system using his id.",
-            "tags": ["Person"],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "Search by the id of the persons.",
-                    "required": true,
-                    "schema": {
-                        "type": "string"}}],
-            "responses": {
-                "200": {
-                    "description": "Return with the person id searched parameters."
-                },
-                "404": {
-                    "description": "Not found."
-                }}},
-        "put": {
-            "summary": "Update a specific person.",
-            "description": "Update a specific person registered on the system using his id.",
-            "tags": ["Person"],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "Change any information by using the id of the person.",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    }}],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":"#/components/schemas/PersonSchema"
-                        },
-                        "examples": {
-                            "Person": {
-                                "value": {
-                                    "cpf": "504.527.140-79",
-                                    "birthDay": "20/08/1998"  
-                                }}}}}},
-            "responses": {
-                "200": {
-                    "description": "OK."
-                },
-                "404": {
-                    "description": "Not found."
-                }}},
-        "delete": {
-            "summary": "Delete a specific person.",
-            "description": "Delete a specific person registered on the system by using his id.",
-            "tags": ["Person"],
-            "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "Delete all the informations by using the id of the person.",
-                    "required": true,
-                    "schema": {
-                    "type": "string"
-                    }}],
-            "responses": {
-                "204": {
-                    "description": "No content."
-                },
-                "404": {
-                    "description": "Not found."
-}}}},
-"/api/v1/authenticate": {
-            "post": {
-                "summary": "Verify a email and password.",
-                "description": "Verify a email and password registered in the system.",
-                "tags": ["Authenticate"],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "email": {
-                                        "type": "string",
-                                        "example": "joazinho@email.com"
-                                    },
-                                    "password": {
-                                        "type": "string",
-                                        "example": "123456"
-                                    }}}}}},
-                 "responses": {
-                    "201": {
-                        "description": "Examples:",
-                        "content":{
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "token": {
-                                            "type": "string"
-                                          },
-                                        "email": {
-                                            "type": "string"
-                                        }}}}}},
-                    "400": {
-                        "description": "Bad Request."
-}}}},
-"/api/v1/rental": {
-    "post": {
-        "summary": "Create a new rental.",
-        "description": "Create a new rental on the system.",
-        "tags": ["Rental"],
-        "requestBody": {
+              "bearerAuth": []
+            }
+          ],
+          "requestBody": {
             "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref":"#/components/schemas/RentalSchema"
-                    },
-                    "examples": {
-                        "Rental": {
-                            "value": {
-                                "name": "Localiza Rental Car",
-                                "cnpj": "16.670.085/0001-17",
-                                "activities": "Aluguel de Carros E Gestão de Frotas",
-                                "address": [
-                                    {
-                                        "zipCode": "96200-200",
-                                        "number":"1234",
-                                        "isFilial": false
-                                    }]}}}}}},
-            "responses": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarSchema"
+                },
+                "examples": {
+                  "car": {
+                    "value": {
+                      "model": "S10 3.0",
+                      "type": "sedan",
+                      "brand": "GM",
+                      "color": "branco",
+                      "year": "2021",
+                      "accessories": [
+                        {
+                          "description": "Ar-condicionado"
+                        },
+                        {
+                          "description": "Dir. Hidráulica"
+                        }
+                      ],
+                      "passengersQtd": 5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
             "201": {
-                "description": "Created."
+              "description": "Created."
             },
             "400": {
-                "description": "Bad Request."
-            }}},
-    "get": {
-        "summary": "List all the rentals.",
-        "description": "List all the rentals on the system.",
-        "tags": ["Rental"],
-        "responses": {
-            "200": {
-                "description": "OK."
-            },
-            "400": {
-                "description": "Bad Request."
-}}}},
-"/api/v1/rental/{id}": {
+              "description": "Bad Request."
+            }
+          }
+        },
         "get": {
-            "summary": "List a specific rental.",
-            "description": "List a specific rental registered on the system using his id.",
-            "tags": ["Rental"],
-            "parameters": [
+          "summary": "List all the cars on the system or only one specified by a defined parameter.",
+          "description": "If you just use the GET method the code will return all the cars registered in the database, but if you want, just define one of the parameters in the search to return a specific result, below are those accepted by the system.",
+          "tags": [
+            "Car"
+          ],
+          "security": [
             {
-                "name": "id",
-                "in": "path",
-                "description": "Search by the id of the rental.",
-                "required": true,
-                "schema": {
-                    "type": "string"
-                }}],
-        "responses": {
-            "200": {
-                "description": "Return with the rental id searched."
-            },
-            "404": {
-                "description": "Not found."
-            }}},
-    "put": {
-        "summary": "Update a specific rental.",
-        "description": "Update a specific rental registered on the system using his id.",
-        "tags": ["Rental"],
-        "parameters": [
+              "bearerAuth": []
+            }
+          ],
+          "parameters": [
             {
-                "name": "id",
-                "in": "path",
-                "description": "Change any information by using the id of the rental.",
-                "required": true,
-                "schema": {
-                    "type": "string"
-                }}],
-        "requestBody": {
-            "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref":"#/components/schemas/RentalSchema"
-                    },
-                    "examples": {
-                        "Rental": {
-                            "value": {
-                                "zipCode": "96200-201",
-                                "number":"4003"
-                            }}}}}},
-        "responses": {
-            "200": {
-                "description": "OK."
-            },
-            "404": {
-                "description": "Not found."
-            }}},
-    "delete": {
-        "summary": "Delete a specific rental.",
-        "description": "Delete a specific rental registered on the system by using his id.",
-        "tags": ["Rental"],
-        "parameters": [{
-                "name": "id",
-                "in": "path",
-                "description": "Delete all the informations by using the id of the rental.",
-                "required": true,
-                "schema": {
+              "name": "Model",
+              "in": "query",
+              "description": "Specific search by car model registered.",
+              "schema": {
                 "type": "string"
-                }}],
-        "responses": {
-            "204": {
-                "description": "No content."
+              }
+            },
+            {
+              "name": "Type",
+              "in": "query",
+              "description": "Specific search by car type registered.",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "Brand",
+              "in": "query",
+              "description": "Specific search by car brand registered.",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "Color",
+              "in": "query",
+              "description": "Specific search by car color registered.",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "Year",
+              "in": "query",
+              "description": "Specific search by car year registered.",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "PassengersQtd",
+              "in": "query",
+              "description": "Specific search by number of passengers in the car's registered.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Return with the searched parameters."
+            }
+          }
+        }
+      },
+      "/api/v1/car/{id}": {
+        "get": {
+          "summary": "List a specific car.",
+          "description": "List a specific car registered on the system using his id.",
+          "tags": [
+            "Car"
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Search for a car for his ID",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CarSchema"
+                    }
+                  }
+                }
+              }
             },
             "404": {
-                "description": "Not found."
-}}}},
-"/api/v1/rental/{id_rental}/reserve": {
-                "post": {
-                    "summary": "Create a new reserve.",
-                    "description": "Create a new reserve on the system.",
-                    "tags": ["Reserve"],
-                    "requestBody": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref":"#/components/schemas/ReserveSchema"
-                                },
-                                "examples": {
-                                    "Reserve": {
-                                        "value": {
-                                            "id_user": "Put here the user id created earlier",
-                                            "data_start": "20/11/2021",
-                                            "data_end": "30/11/2021",
-                                            "id_car": "Put here the car id created earlier",
-                                            "id_rental": "Put here the rental id created earlier",
-                                            "final_value": "500,00"
-                                          }}}}}},
-                        "responses": {
-                        "201": {
-                            "description": "Created."
-                        },
-                        "400": {
-                            "description": "Bad Request."
-                        }}},
-                "get": {
-                    "summary": "List all the reserves.",
-                    "description": "List all the reserve on the system.",
-                    "tags": ["Reserve"],
-                    "responses": {
-                        "200": {
-                            "description": "OK."
-                        },
-                        "400": {
-                            "description": "Bad Request."
-}}}},
-"/api/v1/rental/{id_rental}/reserve/{id}": {
-                    "get": {
-                        "summary": "List a specific reserve.",
-                        "description": "List a specific reserve registered on the system using his id.",
-                        "tags": ["Reserve"],
-                        "parameters": [
-                        {
-                            "name": "id",
-                            "in": "query",
-                            "description": "Search by the id of the reserve.",
-                            "required": true,
-                            "schema": {
-                                "type": "string"
-                            }}],
-                    "responses": {
-                        "200": {
-                            "description": "Return with the reserve id searched."
-                        },
-                        "404": {
-                            "description": "Not found."
-                        }}},
-                "put": {
-                    "summary": "Update a specific reserve.",
-                    "description": "Update a specific reserve registered on the system using his id.",
-                    "tags": ["Reserve"],
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "in": "path",
-                            "description": "Change any information by using the id of the reserve.",
-                            "required": true,
-                            "schema": {
-                                "type": "string"
-                            }}],
-                    "requestBody": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref":"#/components/schemas/ReserveSchema"
-                                },
-                                "examples": {
-                                    "Reserve": {
-                                        "value": {
-                                            "data_start": "20/11/2021",
-                                            "data_end": "30/11/2021"
-                                        }}}}}},
-                    "responses": {
-                        "200": {
-                            "description": "OK."
-                        },
-                        "404": {
-                            "description": "Not found."
-                        }}},
-                "delete": {
-                    "summary": "Delete a specific reserve.",
-                    "description": "Delete a specific reserve registered on the system by using his id.",
-                    "tags": ["Reserve"],
-                    "parameters": [{
-                            "name": "id",
-                            "in": "path",
-                            "description": "Delete all the informations by using the id of the reserve.",
-                            "required": true,
-                            "schema": {
-                            "type": "string"
-                            }}],
-                    "responses": {
-                        "204": {
-                            "description": "No content."
-                        },
-                        "404": {
-                            "description": "Not found."
-}}}},
-"/api/v1/rental/{id_rental}/fleet": {
-                                "post": {
-                                    "summary": "Create a new fleet.",
-                                    "description": "Create a new fleet on the system.",
-                                    "tags": ["Fleet"],
-                                    "requestBody": {
-                                        "content": {
-                                            "application/json": {
-                                                "schema": {
-                                                    "$ref":"#/components/schemas/FleetSchema"
-                                                },
-                                                "examples": {
-                                                    "Fleet": {
-                                                        "value": {
-                                                            "id_car": "Put here the car id created earlier",
-                                                            "id_rental":"Put here the rental id created earlier",
-                                                            "status": "available",
-                                                            "daily_value": "100,00",
-                                                            "plate": "ABC1234"
-                                                          }}}}}},
-                                        "responses": {
-                                        "201": {
-                                            "description": "Created."
-                                        },
-                                        "400": {
-                                            "description": "Bad Request."
-                                        }}},
-                                "get": {
-                                    "summary": "List all the fleets.",
-                                    "description": "List all the fleets on the system.",
-                                    "tags": ["Fleet"],
-                                    "responses": {
-                                        "200": {
-                                            "description": "OK."
-                                        },
-                                        "400": {
-                                            "description": "Bad Request."
-}}}},
-"/api/v1/rental/{id_rental}/fleet/{id}": {
-                                    "get": {
-                                        "summary": "List a specific fleet.",
-                                        "description": "List a specific fleet registered on the system using his id.",
-                                        "tags": ["Fleet"],
-                                        "parameters": [
-                                        {
-                                            "name": "id",
-                                            "in": "query",
-                                            "description": "Search by the id of the fleet.",
-                                            "required": true,
-                                            "schema": {
-                                                "type": "string"
-                                            }}],
-                                    "responses": {
-                                        "200": {
-                                            "description": "Return with the fleet id searched."
-                                        },
-                                        "404": {
-                                            "description": "Not found."
-                                        }}},
-                                "put": {
-                                    "summary": "Update a specific fleet.",
-                                    "description": "Update a specific fleet registered on the system using his id.",
-                                    "tags": ["Fleet"],
-                                    "parameters": [
-                                        {
-                                            "name": "id",
-                                            "in": "path",
-                                            "description": "Change any information by using the id of the fleet.",
-                                            "required": true,
-                                            "schema": {
-                                                "type": "string"
-                                            }}],
-                                    "requestBody": {
-                                        "content": {
-                                            "application/json": {
-                                                "schema": {
-                                                    "$ref":"#/components/schemas/ReserveSchema"
-                                                },
-                                                "examples": {
-                                                    "Fleet": {
-                                                        "value": {
-                                                            "status": "available",
-                                                            "daily_value": "100,00"
-                                                        }}}}}},
-                                    "responses": {
-                                        "200": {
-                                            "description": "OK."
-                                        },
-                                        "404": {
-                                            "description": "Not found."
-                                        }}},
-                                "delete": {
-                                    "summary": "Delete a specific fleet.",
-                                    "description": "Delete a specific fleet registered on the system by using his id.",
-                                    "tags": ["Fleet"],
-                                    "parameters": [{
-                                            "name": "id",
-                                            "in": "path",
-                                            "description": "Delete all the informations by using the id of the fleet.",
-                                            "required": true,
-                                            "schema": {
-                                            "type": "string"
-                                            }}],
-                                    "responses": {
-                                        "204": {
-                                            "description": "No content."
-                                        },
-                                        "404": {
-                                            "description": "Not found."
-}}}}},                        
-"components": {
-                "schemas": {
-                    "CarSchema": {
-                        "type": "object",
-                        "properties": {
-                            "_id": {
-                                "type": "string"
-                            },
-                            "model": {
-                                "type": "string"
-                            },
-                            "type": {
-                                "type": "string"
-                            },
-                            "brand": {
-                                "type": "string"
-                            },
-                            "color": {
-                                "type": "string"
-                            },
-                            "year": {
-                                "type": "number"
-                            },
-                            "accessories": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "description": {
-                                            "type": "string"
-                                        }}}},
-                            "passengersQtd": {
-                                "type": "number"
-                            }}},
-                    "PersonSchema": {
-                        "type": "object",
-                        "properties": {
-                            "_id": {
-                                "type": "string"
-                            },"name": {
-                                "type": "string"
-                            }, "cpf": {
-                                "type": "string"
-                            },"birthDay": {
-                                "type": "string"
-                            },"email": {
-                                "type": "string"
-                            },"password": {
-                                "type": "string"
-                            },"canDrive": {
-                                "type": "string",
-                                "enum": ["yes", "no"]
-                                }}},
-                    "RentalSchema": {
-                        "type": "object",
-                        "properties": {
-                            "_id": {
-                                "type": "string"
-                            },
-                            "name": {
-                                "type": "string"
-                            },
-                            "cnpj": {
-                                "type": "string"
-                            },
-                            "activities": {
-                                "type": "string"
-                            },
-                            "address": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "zipCode": {
-                                            "type": "string"
-                                        },
-                                        "street": {
-                                            "type": "string"
-                                        },
-                                        "complement": {
-                                            "type": "string"
-                                        },
-                                        "district": {
-                                            "type": "string"
-                                        },
-                                        "number": {
-                                            "type": "number"
-                                        },
-                                        "city": {
-                                            "type": "string"
-                                        },
-                                        "state": {
-                                            "type": "string"
-                                        },
-                                        "isFilial": {
-                                            "type": "boolean"
-}}}}}},
-"ReserveSchema": {
-    "type": "object",
-    "properties": {
-        "id_user": {
-            "type": "string"
+              "description": "Not found."
+            }
+          }
         },
-        "data_start": {
-            "type": "string"
+        "put": {
+          "summary": "Update a specific car.",
+          "description": "Update a specific car registered on the system using his id.",
+          "tags": [
+            "Car"
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Change any information by using the id of the car.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarSchema"
+                },
+                "examples": {
+                  "car": {
+                    "value": {
+                      "color": "vermelho",
+                      "year": "2022"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
         },
-        "data_end": {
-            "type": "string"
-        },
-        "id_car": {
-            "type": "string"
-        },
-        "id_rental": {
-            "type": "string"
-        },
-        "final_value": {
-            "type": "number"
+        "delete": {
+          "summary": "Delete a specific car.",
+          "description": "Delete a specific car registered on the system by using his id.",
+          "tags": [
+            "Car"
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Delete all the informations by using the id of the car.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No content."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
         }
-}},
-"FleetSchema": {
-    "type": "object",
-    "properties": {
-        "id_car": {
-            "type": "string"
+      },
+      "/api/v1/car/{id}/accessories/{id}": {
+        "patch": {
+          "summary": "Update a car accessory by id",
+          "description": "This route will select the accessory and update it",
+          "tags": [
+            "Car"
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Delete all the informations by using the id of the car.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No content."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
+        }
+      },
+      "/api/v1/person": {
+        "post": {
+          "summary": "Create a new person.",
+          "description": "Create a new person on the system.",
+          "tags": [
+            "Person"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonSchema"
+                },
+                "examples": {
+                  "person": {
+                    "value": {
+                      "name": "João Lopes",
+                      "cpf": "131.147.860-49",
+                      "birthDay": "03/03/1998",
+                      "email": "joazinho@email.com",
+                      "password": "123456",
+                      "canDrive": "yes"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created."
+            },
+            "400": {
+              "description": "Bad Request."
+            }
+          }
         },
-        "id_rental": {
-            "type": "string"
+        "get": {
+          "summary": "List all the persons.",
+          "description": "List all the persons on the system.",
+          "tags": [
+            "Person"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK."
+            },
+            "400": {
+              "description": "Bad Request."
+            }
+          }
+        }
+      },
+      "/api/v1/person/{id}": {
+        "get": {
+          "summary": "List a specific person.",
+          "description": "List a specific person registered on the system using his id.",
+          "tags": [
+            "Person"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Search by the id of the persons.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Return with the person id searched parameters."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
         },
-        "status": {
-            "type": "string"
+        "put": {
+          "summary": "Update a specific person.",
+          "description": "Update a specific person registered on the system using his id.",
+          "tags": [
+            "Person"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Change any information by using the id of the person.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonSchema"
+                },
+                "examples": {
+                  "Person": {
+                    "value": {
+                      "cpf": "504.527.140-79",
+                      "birthDay": "20/08/1998"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
         },
-        "daily_value": {
-            "type": "number"
+        "delete": {
+          "summary": "Delete a specific person.",
+          "description": "Delete a specific person registered on the system by using his id.",
+          "tags": [
+            "Person"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Delete all the informations by using the id of the person.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No content."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
+        }
+      },
+      "/api/v1/authenticate": {
+        "post": {
+          "summary": "Verify a email and password.",
+          "description": "Verify a email and password registered in the system.",
+          "tags": [
+            "Authenticate"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "joazinho@email.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "123456"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Examples:",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request."
+            }
+          }
+        }
+      },
+      "/api/v1/rental": {
+        "post": {
+          "summary": "Create a new rental.",
+          "description": "Create a new rental on the system.",
+          "tags": [
+            "Rental"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RentalSchema"
+                },
+                "examples": {
+                  "Rental": {
+                    "value": {
+                      "name": "Localiza Rental Car",
+                      "cnpj": "16.670.085/0001-17",
+                      "activities": "Aluguel de Carros E Gestão de Frotas",
+                      "address": [
+                        {
+                          "zipCode": "96200-200",
+                          "number": "1234",
+                          "isFilial": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created."
+            },
+            "400": {
+              "description": "Bad Request."
+            }
+          }
         },
-        "plate": {
-            "type": "string"
-        }}}},
-        "securitySchemes": {
-            "bearerAuth": {
-              "type": "http",
-              "scheme": "bearer",
-              "bearerFormat": "JWT"
-}}}}
+        "get": {
+          "summary": "List all the rentals.",
+          "description": "List all the rentals on the system.",
+          "tags": [
+            "Rental"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK."
+            },
+            "400": {
+              "description": "Bad Request."
+            }
+          }
+        }
+      },
+      "/api/v1/rental/{id}": {
+        "get": {
+          "summary": "List a specific rental.",
+          "description": "List a specific rental registered on the system using his id.",
+          "tags": [
+            "Rental"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Search by the id of the rental.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Return with the rental id searched."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific rental.",
+          "description": "Update a specific rental registered on the system using his id.",
+          "tags": [
+            "Rental"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Change any information by using the id of the rental.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RentalSchema"
+                },
+                "examples": {
+                  "Rental": {
+                    "value": {
+                      "zipCode": "96200-201",
+                      "number": "4003"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific rental.",
+          "description": "Delete a specific rental registered on the system by using his id.",
+          "tags": [
+            "Rental"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Delete all the informations by using the id of the rental.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No content."
+            },
+            "404": {
+              "description": "Not found."
+            }
+          }
+        }
+      },
+      "/api/v1/rental/{id_rental}/reserve": {
+        "parameters": [
+          {
+            "name": "id_rental",
+            "in": "path",
+            "description": "Search for a rental company by using his ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "post": {
+          "summary": "Create a new reserve.",
+          "description": "Create a new reserve in the system.",
+          "tags": ["Reserve"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReserveSchema"}}}},
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ReserveSchema"
+                  }}}},
+            "400": {
+              "description": "Bad Request"
+            }}},
+        "get": {
+          "summary": "List all the reserves.",
+          "description": "List all the reserves in the system.",
+          "tags": ["Reserve"],
+          "parameters": [{
+              "name": "id_car",
+              "in": "query",
+              "description": "Search id_car",
+              "schema": {
+                "type": "string"
+              }},{
+              "name": "id_rental",
+              "in": "query",
+              "description": "Search id_rental",
+              "schema": {
+                "type": "string"
+              }},{
+              "name": "id_user",
+              "in": "query",
+              "description": "Search id_user",
+              "schema": {
+                "type": "string"
+              }},{
+              "name": "data_start",
+              "in": "query",
+              "description": "Search data_start",
+              "schema": {
+                "type": "string",
+                "format": "date"
+              }},{
+              "name": "data_end",
+              "in": "query",
+              "description": "Search data_end",
+              "schema": {
+                "type": "string",
+                "format": "date"
+              }},{
+              "name": "final_value",
+              "in": "query",
+              "description": "Search final_value",
+              "schema": {
+                "type": "number"
+              }}],
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RentalSchema"
+                  }}}},
+            "400": {
+              "description": "Bad Request"
+            }}}},
+      "/api/v1/rental/{id_rental}/reserve/{id}": {
+        "parameters": [
+          {
+            "name": "id_rental",
+            "in": "path",
+            "description": "Search for a rental company by ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }},{
+            "name": "id",
+            "in": "path",
+            "description": "Search for a reservation by ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }}],
+        "get": {
+          "summary": "List a specific reserve.",
+          "description": "List a specific reserve on the system.",
+          "tags": [
+            "Reserve"
+          ],
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReserveSchema"
+                    }}}}},
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }}},
+        "put": {
+          "summary": "Update a specifc reserve.",
+          "description": "Update a specifc reserve on the system.",
+          "tags": [
+            "Reserve"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Search for a Book by ID",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }}],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReserveSchema"
+                }}}},
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReserveSchema"
+                    }}}}},
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }}},
+        "delete": {
+          "summary": "Delete a specific reserve.",
+          "description": "Delete a specific reserve on the system.",
+          "tags": [
+            "Reserve"
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReserveSchema"
+                    }}}}},
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }}}},
+      "/api/v1/rental/{id_rental}/fleet": {
+        "parameters": [
+          {
+            "name": "id_rental",
+            "in": "path",
+            "description": "Search for a rental company by using his ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }}],
+        "post": {
+          "summary": "Create a new fleet.",
+          "description": "Create a new fleet on the system.",
+          "tags": [
+            "Fleet"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FleetSchema"
+                }}}},
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FleetSchema"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        },
+        "get": {
+          "summary": "List all the fleets",
+          "description": "List all the fleets on the system.",
+          "tags": [
+            "Fleet"
+          ],
+          "parameters": [
+            {
+              "name": "id_car",
+              "in": "query",
+              "description": "Search id_car",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "Search status",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "available",
+                  "rented",
+                  "unavailable"
+                ]
+              }
+            },
+            {
+              "name": "daily_value",
+              "in": "query",
+              "description": "Search daily_value",
+              "schema": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "plate",
+              "in": "query",
+              "description": "Search plate",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RentalSchema"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      },
+      "/api/v1/rental/{id_rental}/fleet/{id}": {
+        "parameters": [
+          {
+            "name": "id_rental",
+            "in": "path",
+            "description": "Search for a rental company by ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Search a fleet by ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "get": {
+          "summary": "List a specifc fleet.",
+          "description": "List a specifc fleet on the system.",
+          "tags": [
+            "Fleet"
+          ],
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FleetSchema"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a specific fleet.",
+          "description": "Update a specific fleet on the system.",
+          "tags": [
+            "Fleet"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Search a fleet by ID",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FleetSchema"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Good Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FleetSchema"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific fleet.",
+          "description": "Delete a specific fleet on the system.",
+          "tags": [
+            "Fleet"
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FleetSchema"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "CarSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "brand": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string"
+            },
+            "year": {
+              "type": "number"
+            },
+            "accessories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "passengersQtd": {
+              "type": "number"
+            }
+          }
+        },
+        "PersonSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "cpf": {
+              "type": "string"
+            },
+            "birthDay": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "canDrive": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            }
+          }
+        },
+        "RentalSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "cnpj": {
+              "type": "string"
+            },
+            "activities": {
+              "type": "string"
+            },
+            "address": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "zipCode": {
+                    "type": "string"
+                  },
+                  "street": {
+                    "type": "string"
+                  },
+                  "complement": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "number"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "isFilial": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ReserveSchema": {
+          "type": "object",
+          "properties": {
+            "id_user": {
+              "type": "string"
+            },
+            "data_start": {
+              "type": "string"
+            },
+            "data_end": {
+              "type": "string"
+            },
+            "id_car": {
+              "type": "string"
+            },
+            "id_rental": {
+              "type": "string"
+            },
+            "final_value": {
+              "type": "number"
+            }
+          }
+        },
+        "FleetSchema": {
+          "type": "object",
+          "properties": {
+            "id_car": {
+              "type": "string"
+            },
+            "id_rental": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "daily_value": {
+              "type": "number"
+            },
+            "plate": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
