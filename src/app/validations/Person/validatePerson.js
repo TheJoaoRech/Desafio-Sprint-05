@@ -1,6 +1,7 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const birthDayValidate = require('../../utils/birthDayValidate');
 const cpfValidation = require('../../utils/cpfValidation');
+const { cpfRegex } = require('../../utils/regexExample');
 
 module.exports = async (req, res, next) => {
   try {
@@ -8,7 +9,7 @@ module.exports = async (req, res, next) => {
 
       name: Joi.string().min(3).max(30).required()
         .trim(),
-      cpf: Joi.string().required().regex(/^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}/).message('Your CPF should only contain characters accepted by the system!'),
+      cpf: Joi.string().required().regex(cpfRegex).message('Your CPF should only contain characters accepted by the system!'),
       birthDay: Joi.date().required().format('DD/MM/YYYY').max(birthDayValidate()),
       email: Joi.string().min(10).required().email()
         .lowercase()

@@ -1,12 +1,13 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const birthDayValidate = require('../../utils/birthDayValidate');
+const { cpfRegex } = require('../../utils/regexExample');
 
 module.exports = async (req, res, next) => {
   try {
     const schemaPerson = Joi.object({
 
       name: Joi.string().min(3).max(30).trim(),
-      cpf: Joi.string().min(11).max(14).regex(/^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}/),
+      cpf: Joi.string().min(11).max(14).regex(cpfRegex),
       birthDay: Joi.date().format('DD/MM/YYYY').max(birthDayValidate()),
       email: Joi.string().min(10).email().lowercase()
         .trim(),

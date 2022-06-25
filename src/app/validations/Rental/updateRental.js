@@ -1,15 +1,17 @@
 const Joi = require('joi');
+const { cnpjRegex } = require('../../utils/regexExample');
+const { cepRegex } = require('../../utils/regexExample');
 
 module.exports = async (req, res, next) => {
   try {
     const schemaRental = Joi.object({
 
       name: Joi.string().min(2),
-      cnpj: Joi.string().regex(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/),
+      cnpj: Joi.string().regex(cnpjRegex),
       activities: Joi.string().min(5),
       address: Joi.array().min(1).items(
         {
-          zipCode: Joi.string().regex(/^\d{5}-\d{3}$/),
+          zipCode: Joi.string().regex(cepRegex),
           street: Joi.string().min(2),
           complement: Joi.string(),
           number: Joi.number().min(1),
