@@ -50,9 +50,7 @@ class RentalController {
       const result = await RentalServices.deleteRental(req.params.id);
       return res.status(204).json(result);
     } catch (error) {
-      return res.status(error.status || 400).json(
-        { Error: error.name, Description: error.description },
-      );
+      return res.status(error.status || 400).send();
     }
   }
 }
