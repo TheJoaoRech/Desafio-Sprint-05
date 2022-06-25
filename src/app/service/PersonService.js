@@ -1,30 +1,30 @@
 const PersonRepository = require('../repository/PersonRepository');
 
 class PersonService {
-  static async create(payload) {
+  async create(payload) {
     const result = await PersonRepository.create(payload);
     return result;
   }
 
-  static async list(payload) {
+  async list(payload) {
     const result = await PersonRepository.list(payload);
     return result;
   }
 
-  static async getById(payload) {
+  async getById(payload) {
     const result = await PersonRepository.getById(payload);
     return result;
   }
 
-  static async updatePerson(payload, reqBody) {
+  async updatePerson(payload, reqBody) {
     const result = await PersonRepository.updatePerson(payload, reqBody);
     return result;
   }
 
-  static async deletePerson(payload) {
+  async deletePerson(payload) {
     const result = await PersonRepository.deletePerson(payload);
     return result;
   }
 }
 
-module.exports = PersonService;
+module.exports = new PersonService();

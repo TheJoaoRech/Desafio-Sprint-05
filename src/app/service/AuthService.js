@@ -4,7 +4,7 @@ const PersonRepository = require('../repository/PersonRepository');
 const authConfig = require('../config/authConfig.json');
 
 class AuthService {
-  static async auth(email, password) {
+  async auth(email, password) {
     const person = await PersonRepository.auth(email);
 
     if (!person) {
@@ -25,4 +25,4 @@ class AuthService {
   }
 }
 
-module.exports = AuthService;
+module.exports = new AuthService();

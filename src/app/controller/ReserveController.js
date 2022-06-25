@@ -1,7 +1,7 @@
 const ReserveService = require('../service/ReserveService');
 
 class ReserveController {
-  static async create(req, res) {
+  async create(req, res) {
     try {
       const result = await ReserveService.create(req.body);
       return res.status(201).json(result);
@@ -12,7 +12,7 @@ class ReserveController {
     }
   }
 
-  static async list(req, res) {
+  async list(req, res) {
     try {
       const { id_rental } = req.params;
       const reqQuery = req.query;
@@ -27,7 +27,7 @@ class ReserveController {
     }
   }
 
-  static async getById(req, res) {
+  async getById(req, res) {
     try {
       const result = await ReserveService.getById(req.params.id);
       return res.status(200).json(result);
@@ -38,7 +38,7 @@ class ReserveController {
     }
   }
 
-  static async update(req, res) {
+  async update(req, res) {
     try {
       const result = await ReserveService.updateReserve(req.params.id, req.body);
       return res.status(200).json(result);
@@ -49,7 +49,7 @@ class ReserveController {
     }
   }
 
-  static async delete(req, res) {
+  async delete(req, res) {
     try {
       const result = await ReserveService.deleteReserve(req.params.id);
       return res.status(204).json(result);
@@ -59,4 +59,4 @@ class ReserveController {
   }
 }
 
-module.exports = ReserveController;
+module.exports = new ReserveController();

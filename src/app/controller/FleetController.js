@@ -1,7 +1,7 @@
 const FleetService = require('../service/FleetService');
 
 class FleetController {
-  static async create(req, res) {
+  async create(req, res) {
     try {
       const result = await FleetService.create(req.body);
       return res.status(201).json(result);
@@ -12,7 +12,7 @@ class FleetController {
     }
   }
 
-  static async list(req, res) {
+  async list(req, res) {
     try {
       const { id_rental } = req.params;
       const reqQuery = req.query;
@@ -27,7 +27,7 @@ class FleetController {
     }
   }
 
-  static async getById(req, res) {
+  async getById(req, res) {
     try {
       const result = await FleetService.getById(req.params.id);
       return res.status(200).json(result);
@@ -38,7 +38,7 @@ class FleetController {
     }
   }
 
-  static async update(req, res) {
+  async update(req, res) {
     try {
       const result = await FleetService.updateFleet(req.params.id, req.body);
       return res.status(200).json(result);
@@ -49,7 +49,7 @@ class FleetController {
     }
   }
 
-  static async delete(req, res) {
+  async delete(req, res) {
     try {
       const result = await FleetService.deleteFleet(req.params.id);
       return res.status(204).json(result);
@@ -59,4 +59,4 @@ class FleetController {
   }
 }
 
-module.exports = FleetController;
+module.exports = new FleetController();

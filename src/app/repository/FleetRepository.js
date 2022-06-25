@@ -1,11 +1,11 @@
 const FleetSchema = require('../schema/FleetSchema');
 
 class FleetRepository {
-  static async create(payload) {
+  async create(payload) {
     return FleetSchema.create(payload);
   }
 
-  static async list(payload) {
+  async list(payload) {
     const costumizePaginate = {
       totalDocs: 'total', docs: 'Fleets', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false,
     };
@@ -18,17 +18,17 @@ class FleetRepository {
     return FleetSchema.paginate(query, options);
   }
 
-  static async getById(payload) {
+  async getById(payload) {
     return FleetSchema.findById(payload);
   }
 
-  static async updateFleet(payload, reqBody) {
+  async updateFleet(payload, reqBody) {
     return FleetSchema.findByIdAndUpdate(payload, reqBody);
   }
 
-  static async deleteFleet(payload) {
+  async deleteFleet(payload) {
     return FleetSchema.findByIdAndDelete(payload);
   }
 }
 
-module.exports = FleetRepository;
+module.exports = new FleetRepository();

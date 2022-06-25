@@ -1,7 +1,7 @@
 const AuthService = require('../service/AuthService');
 
 class AuthController {
-  static async auth(req, res) {
+  async auth(req, res) {
     try {
       const { email, password } = req.body;
       const result = await AuthService.auth(email, password);
@@ -12,4 +12,4 @@ class AuthController {
   }
 }
 
-module.exports = AuthController;
+module.exports = new AuthController();
