@@ -11,5 +11,13 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    camelcase: 'off',
+    'class-methods-use-this': 'off',
+    'consistent-return': 'off',
+    'no-await-in-loop': 'off',
+    'no-param-reassign': 'off',
+    'no-plusplus': 'off',
+    'func-names': 'off',
+    'no-console': 'off',
   },
 };
