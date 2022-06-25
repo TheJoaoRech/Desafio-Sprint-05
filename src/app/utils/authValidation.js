@@ -9,7 +9,7 @@ const autPost = Joi.object({
 module.exports = async (req, res, next) => {
   const reqBody = req.body;
   try {
-    if (req.method == 'POST') {
+    if (req.method === 'POST') {
       await autPost.validateAsync({ ...reqBody });
       next();
     }
