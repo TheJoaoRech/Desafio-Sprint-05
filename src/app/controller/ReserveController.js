@@ -15,7 +15,7 @@ class ReserveController {
   async list(req, res) {
     try {
       const { id_rental } = req.params;
-      const reqQuery = req.query;
+      const reqQuery = (req.query);
       const list = await ReserveService.list(
         { ...reqQuery, id_rental: String(id_rental) },
       );

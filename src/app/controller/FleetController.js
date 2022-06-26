@@ -14,8 +14,8 @@ class FleetController {
 
   async list(req, res) {
     try {
-      const { id_rental } = req.params;
-      const reqQuery = req.query;
+      const { id_rental } = (req.params);
+      const reqQuery = (req.query);
       const list = await FleetService.list(
         { ...reqQuery, id_rental: String(id_rental) },
       );
