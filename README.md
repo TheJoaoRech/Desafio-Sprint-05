@@ -27,26 +27,23 @@
 "@joi/date": "^2.1.0",
 "axios": "^0.27.2",
 "bcryptjs": "^2.4.3",
-"body-parser": "^1.20.0",
 "dotenv": "^16.0.1",
 "joi": "^17.6.0",
 "jsonwebtoken": "^8.5.1",
 "moment": "^2.29.3",
+"mongoose": "^6.4.0",
 "mongoose-paginate-v2": "^1.6.3",
 "moongose": "^1.0.0",
-"supertest": "^6.2.3",
 "swagger-ui-express": "^4.4.0",
-"eslint": "^8.17.0",
+"eslint": "^8.18.0",
 "eslint-config-airbnb-base": "^15.0.0",
-"eslint-config-node": "^4.1.0",
 "eslint-config-plugin": "^1.0.11",
 "eslint-config-prettier": "^8.5.0",
 "eslint-plugin-import": "^2.26.0",
-"eslint-plugin-node": "^11.1.0",
-"eslint-plugin-prettier": "^4.0.0",
 "jest": "^28.1.1",
 "nodemon": "^2.0.16",
-"prettier": "^2.7.1"
+"prettier": "^2.7.1",
+"supertest": "^6.2.3"
 ```
 ### 🖼️ Frameworks:
 ```
@@ -127,7 +124,7 @@
  <h1 align> ⭐ Some useful things about the code: </h1>
  
  ### 🦸 - You can access the application from this Heroku URL: https://apisprint05.herokuapp.com/
- ### 🧪 - You can test the code using the `npm test` command. (The JEST tool was used to perform this feature)
+ ### 🧪 - You can test the code using the `npm test` command. (The JEST tool was used to perform this feature).
  
  
 <h1 align=> 🖌️ API author: </h1>
