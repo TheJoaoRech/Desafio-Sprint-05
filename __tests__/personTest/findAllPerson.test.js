@@ -10,7 +10,7 @@ describe('Create a person', () => {
       birthDay: '10/10/2002',
       email: 'joazinho@emai.com',
       password: '123456',
-      canDrive: 'yes',
+      canDrive: 'yes'
     };
     await request(app).post('/api/v1/person/').send(person);
     const response = await request(app).get('/api/v1/person');

@@ -7,13 +7,22 @@ class FleetRepository {
 
   async list(payload) {
     const costumizePaginate = {
-      totalDocs: 'total', docs: 'Fleets', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false,
+      totalDocs: 'total',
+      docs: 'Fleets',
+      page: 'offset',
+      nextPage: false,
+      prevPage: false,
+      totalPages: 'offsets',
+      pagingCounter: false,
+      meta: false,
+      hasPrevPage: false,
+      hasNextPage: false
     };
     const { limit = 100, offset = 0, ...query } = payload;
     const options = {
       limit: Number(limit),
       offset: Number(offset),
-      customLabels: costumizePaginate,
+      customLabels: costumizePaginate
     };
     return FleetSchema.paginate(query, options);
   }

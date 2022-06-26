@@ -1,9 +1,7 @@
 const enumsExamples = {
-
   status: ['available', 'unavailable', 'rented'],
 
-  canDrive: ['yes', 'no'],
-  
+  canDrive: ['yes', 'no']
 };
-  
+
 module.exports = enumsExamples;

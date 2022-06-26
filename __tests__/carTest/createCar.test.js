@@ -10,7 +10,7 @@ describe('Create a car', () => {
       birthDay: '10/10/2002',
       email: 'joazinho@emai.com',
       password: '123456',
-      canDrive: 'yes',
+      canDrive: 'yes'
     };
     const car = {
       model: 'S10',
@@ -20,10 +20,10 @@ describe('Create a car', () => {
       year: '2021',
       accessories: [
         {
-          description: 'Ar-condicionado',
-        },
+          description: 'Ar-condicionado'
+        }
       ],
-      passengersQtd: '5',
+      passengersQtd: '5'
     };
     const response = await request(app).post('/api/v1/person/').send(person);
     let { status } = response;

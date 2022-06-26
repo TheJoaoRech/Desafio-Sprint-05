@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
       data_end: Joi.date().format('DD/MM/YYYY'),
       id_car: Joi.string().regex(idRegex),
       id_rental: Joi.string().regex(idRegex),
-      final_value: Joi.number(),
+      final_value: Joi.number()
     });
 
     const { error } = await schemaReserve.validate(req.body, { abortEarly: false });
@@ -19,8 +19,8 @@ module.exports = async (req, res, next) => {
     return res.status(400).json(
       error.details.map((detail) => ({
         name: detail.path.join(),
-        description: detail.message,
-      })),
+        description: detail.message
+      }))
     );
   }
 };

@@ -1,5 +1,4 @@
 module.exports = {
-
   bail: true,
 
   clearMocks: true,
@@ -12,6 +11,5 @@ module.exports = {
 
   testEnvironment: 'node',
 
-  testMatch: ['**/__tests__/**/*.test.js?(x)'],
-
+  testMatch: ['**/__tests__/**/*.test.js?(x)']
 };

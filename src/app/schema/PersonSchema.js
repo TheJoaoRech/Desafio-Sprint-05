@@ -6,42 +6,40 @@ const PersonSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
 
     cpf: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
 
     birthDay: {
       type: String,
-      required: true,
+      required: true
     },
 
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
 
     password: {
       type: String,
       required: true,
-      select: false,
+      select: false
     },
 
     canDrive: {
       type: String,
       enum: ['yes', 'no'],
-      required: true,
-    },
-
+      required: true
+    }
   },
 
-  { timestamps: false, versionKey: false },
-
+  { timestamps: false, versionKey: false }
 );
 
 PersonSchema.pre('save', async function (next) {

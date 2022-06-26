@@ -18,6 +18,9 @@ module.exports = {
     'no-console': 'off',
     'no-param-reassign': ['error', { props: false }],
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
-    'no-underscore-dangle': 'off'
+    'no-underscore-dangle': 'off',
+    'func-names': 'off',
+    'no-await-in-loop': 'off',
+    'consistent-return': 'off'
   }
 };

@@ -8,9 +8,11 @@ module.exports = async (req, res, next) => {
       brand: Joi.string().min(2).trim(),
       color: Joi.string().min(2).trim(),
       year: Joi.number().min(1950).max(2022),
-      accessories: Joi.array().min(1).unique()
+      accessories: Joi.array()
+        .min(1)
+        .unique()
         .items({ description: Joi.string().min(1).trim() }),
-      passengersQtd: Joi.number().min(1),
+      passengersQtd: Joi.number().min(1)
     });
     const { error } = await schemaCar.validate(req.body, { abortEarly: false });
     if (error) throw error;
@@ -19,8 +21,8 @@ module.exports = async (req, res, next) => {
     return res.status(400).json(
       error.details.map((detail) => ({
         name: detail.path.join('.'),
-        description: detail.message,
-      })),
+        description: detail.message
+      }))
     );
   }
 };

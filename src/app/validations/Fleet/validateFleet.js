@@ -8,9 +8,11 @@ module.exports = async (req, res, next) => {
     const schemaFleet = Joi.object({
       id_car: Joi.string().regex(idRegex).required(),
       id_rental: Joi.string(),
-      status: Joi.string().valid(...status).required(),
+      status: Joi.string()
+        .valid(...status)
+        .required(),
       daily_value: Joi.number().min(1).required(),
-      plate: Joi.string().regex(plateRegex).required(),
+      plate: Joi.string().regex(plateRegex).required()
     });
 
     const { error } = await schemaFleet.validate(req.body, { abortEarly: false });
@@ -20,8 +22,8 @@ module.exports = async (req, res, next) => {
     return res.status(400).json(
       error.details.map((detail) => ({
         name: detail.path.join('.'),
-        description: detail.message,
-      })),
+        description: detail.message
+      }))
     );
   }
 };

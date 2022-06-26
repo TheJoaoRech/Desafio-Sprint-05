@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
       id_rental: Joi.string(),
       status: Joi.string().valid(...status),
       daily_value: Joi.number().min(1),
-      plate: Joi.string().regex(plateRegex),
+      plate: Joi.string().regex(plateRegex)
     });
 
     const { error } = await schemaFleet.validate(req.body, { abortEarly: false });
@@ -20,8 +20,8 @@ module.exports = async (req, res, next) => {
     return res.status(400).json(
       error.details.map((detail) => ({
         name: detail.path.join('.'),
-        description: detail.message,
-      })),
+        description: detail.message
+      }))
     );
   }
 };

@@ -7,13 +7,22 @@ class CarRepository {
 
   async list(payload) {
     const costumizePaginate = {
-      totalDocs: 'total', docs: 'Vehicles', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false,
+      totalDocs: 'total',
+      docs: 'Vehicles',
+      page: 'offset',
+      nextPage: false,
+      prevPage: false,
+      totalPages: 'offsets',
+      pagingCounter: false,
+      meta: false,
+      hasPrevPage: false,
+      hasNextPage: false
     };
     const { limit = 100, offset = 0, ...query } = payload;
     const options = {
       limit: Number(limit),
       offset: Number(offset),
-      customLabels: costumizePaginate,
+      customLabels: costumizePaginate
     };
     return CarSchema.paginate(query, options);
   }
@@ -27,7 +36,11 @@ class CarRepository {
   }
 
   async updateAcessorieCar(idAcess, attDesc) {
-    const result = await CarSchema.findOneAndUpdate({ 'accessories._id': idAcess }, { $set: { 'accessories.$.description': attDesc.description } }, { returnOriginal: false });
+    const result = await CarSchema.findOneAndUpdate(
+      { 'accessories._id': idAcess },
+      { $set: { 'accessories.$.description': attDesc.description } },
+      { returnOriginal: false }
+    );
     return result;
   }
 

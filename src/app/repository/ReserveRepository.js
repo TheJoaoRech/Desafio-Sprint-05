@@ -7,13 +7,22 @@ class ReserveRepository {
 
   async list(payload) {
     const costumizePaginate = {
-      totalDocs: 'total', docs: 'Reserves', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false,
+      totalDocs: 'total',
+      docs: 'Reserves',
+      page: 'offset',
+      nextPage: false,
+      prevPage: false,
+      totalPages: 'offsets',
+      pagingCounter: false,
+      meta: false,
+      hasPrevPage: false,
+      hasNextPage: false
     };
     const { limit = 100, offset = 0, ...query } = payload;
     const options = {
       limit: Number(limit),
       offset: Number(offset),
-      customLabels: costumizePaginate,
+      customLabels: costumizePaginate
     };
     return ReserveSchema.paginate(query, options);
   }

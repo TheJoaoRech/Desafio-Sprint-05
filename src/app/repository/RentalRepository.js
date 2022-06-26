@@ -4,9 +4,9 @@ const RentalSchema = require('../schema/RentalSchema');
 class RentalRepository {
   async create(payload) {
     for (let dado = 0; dado < payload.address.length; dado++) {
-      const {
-        logradouro, bairro, localidade, uf,
-      } = (await axios.get(`https://viacep.com.br/ws/${payload.address[dado].zipCode}/json`)).data;
+      const { logradouro, bairro, localidade, uf } = (
+        await axios.get(`https://viacep.com.br/ws/${payload.address[dado].zipCode}/json`)
+      ).data;
       payload.address[dado].street = logradouro;
       payload.address[dado].district = bairro;
       payload.address[dado].city = localidade;
@@ -17,13 +17,22 @@ class RentalRepository {
 
   async list(payload) {
     const costumizePaginate = {
-      totalDocs: 'total', docs: 'Rentals', page: 'offset', nextPage: false, prevPage: false, totalPages: 'offsets', pagingCounter: false, meta: false, hasPrevPage: false, hasNextPage: false,
+      totalDocs: 'total',
+      docs: 'Rentals',
+      page: 'offset',
+      nextPage: false,
+      prevPage: false,
+      totalPages: 'offsets',
+      pagingCounter: false,
+      meta: false,
+      hasPrevPage: false,
+      hasNextPage: false
     };
     const { limit = 100, offset = 0, ...query } = payload;
     const options = {
       limit: Number(limit),
       offset: Number(offset),
-      customLabels: costumizePaginate,
+      customLabels: costumizePaginate
     };
     return RentalSchema.paginate(query, options);
   }

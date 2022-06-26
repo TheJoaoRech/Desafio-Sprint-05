@@ -7,14 +7,17 @@ const { canDrive } = require('../../utils/enumsExamples');
 module.exports = async (req, res, next) => {
   try {
     const schemaPerson = Joi.object({
-
-      name: Joi.string().min(3).max(30).required()
-        .trim(),
-      cpf: Joi.string().required().regex(cpfRegex).message('Your CPF should only contain characters accepted by the system!'),
+      name: Joi.string().min(3).max(30).required().trim(),
+      cpf: Joi.string()
+        .required()
+        .regex(cpfRegex)
+        .message('Your CPF should only contain characters accepted by the system!'),
       birthDay: Joi.date().required().format('DD/MM/YYYY').max(birthDayValidate()),
       email: Joi.string().min(10).required().email(),
       password: Joi.string().min(6).required(),
-      canDrive: Joi.string().valid(...canDrive).required(),
+      canDrive: Joi.string()
+        .valid(...canDrive)
+        .required()
     });
 
     if (!cpfValidation(req.body.cpf)) throw new Error('Your CPF is invalid!');
@@ -28,8 +31,8 @@ module.exports = async (req, res, next) => {
     return res.status(400).json(
       error.details.map((detail) => ({
         name: detail.path.join(),
-        description: detail.message,
-      })),
+        description: detail.message
+      }))
     );
   }
 };
