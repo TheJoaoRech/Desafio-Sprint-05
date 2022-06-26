@@ -67,7 +67,7 @@
   "data_end": "30/11/2021",
   "id_car": "Put here the car ID created earlier",
   "id_rental": "Put here the rental ID created earlier",
-  "final_value": "500,00",
+  "final_value": "500"
 }
 ```
 
@@ -79,6 +79,6 @@
   "id_rental":"Put here the rental ID created earlier",
   "status": "available",
   "daily_value": "100,00",
-  "plate": "ABC1234",
+  "plate": "ABC123456"
 }
 ````
