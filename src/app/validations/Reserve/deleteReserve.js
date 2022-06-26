@@ -1,13 +1,14 @@
 const Joi = require('joi').extend(require('@joi/date'));
+const { idRegex } = require('../../utils/regexExample');
 
 module.exports = async (req, res, next) => {
   try {
     const schemaReserve = Joi.object({
-      id_user: Joi.string(),
+      id_user: Joi.string().regex(idRegex),
       data_start: Joi.date().format('DD/MM/YYYY'),
       data_end: Joi.date().format('DD/MM/YYYY'),
-      id_car: Joi.string(),
-      id_rental: Joi.string(),
+      id_car: Joi.string().regex(idRegex),
+      id_rental: Joi.string().regex(idRegex),
       final_value: Joi.number(),
     });
 

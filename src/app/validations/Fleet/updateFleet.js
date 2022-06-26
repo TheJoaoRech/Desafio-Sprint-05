@@ -1,13 +1,15 @@
 const Joi = require('joi');
+const { plateRegex } = require('../../utils/regexExample');
+const { idRegex } = require('../../utils/regexExample');
 
 module.exports = async (req, res, next) => {
   try {
     const schemaFleet = Joi.object({
-      id_car: Joi.string(),
+      id_car: Joi.string().regex(idRegex),
       id_rental: Joi.string(),
       status: Joi.string().valid('available', 'unavailable', 'rented'),
       daily_value: Joi.number().min(1),
-      plate: Joi.string(),
+      plate: Joi.string().regex(plateRegex),
     });
 
     const { error } = await schemaFleet.validate(req.body, { abortEarly: false });
