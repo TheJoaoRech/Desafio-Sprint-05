@@ -1,13 +1,14 @@
 const Joi = require('joi');
 const { plateRegex } = require('../../utils/regexExample');
 const { idRegex } = require('../../utils/regexExample');
+const { status } = require('../../utils/enumsExamples');
 
 module.exports = async (req, res, next) => {
   try {
     const schemaFleet = Joi.object({
       id_car: Joi.string().regex(idRegex),
       id_rental: Joi.string(),
-      status: Joi.string().valid('available', 'unavailable', 'rented'),
+      status: Joi.string().valid(...status),
       daily_value: Joi.number().min(1),
       plate: Joi.string().regex(plateRegex),
     });

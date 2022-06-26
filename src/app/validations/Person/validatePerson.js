@@ -2,6 +2,7 @@ const Joi = require('joi').extend(require('@joi/date'));
 const birthDayValidate = require('../../utils/birthDayValidate');
 const cpfValidation = require('../../utils/cpfValidation');
 const { cpfRegex } = require('../../utils/regexExample');
+const { canDrive } = require('../../utils/enumsExamples');
 
 module.exports = async (req, res, next) => {
   try {
@@ -11,11 +12,9 @@ module.exports = async (req, res, next) => {
         .trim(),
       cpf: Joi.string().required().regex(cpfRegex).message('Your CPF should only contain characters accepted by the system!'),
       birthDay: Joi.date().required().format('DD/MM/YYYY').max(birthDayValidate()),
-      email: Joi.string().min(10).required().email()
-        .lowercase()
-        .trim(),
+      email: Joi.string().min(10).required().email(),
       password: Joi.string().min(6).required(),
-      canDrive: Joi.string().required().valid('yes', 'no'),
+      canDrive: Joi.string().valid(...canDrive).required(),
     });
 
     if (!cpfValidation(req.body.cpf)) throw new Error('Your CPF is invalid!');
