@@ -16,7 +16,7 @@ describe('Update a person!', () => {
       canDrive: 'yes'
     });
     const updatePerson = await request(app).put(`/api/v1/person/${person.body._id}`).send({
-      canDrive: 'no'
+      password: '1234567'
     });
     expect(updatePerson.status).toBe(200);
   });
