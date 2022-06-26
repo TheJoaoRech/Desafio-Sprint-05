@@ -32,7 +32,7 @@ const carPostTest = {
       description: 'Dir. Hidráulica'
     }
   ],
-  passengersQtd: 6
+  passengersQtd: 4
 };
 
 let token = '';

@@ -25,7 +25,7 @@ describe('Delete a rental!', () => {
     expect(rentalDelete.status).toBe(204);
   });
   it('Delete a rental with an error.', async () => {
-    const rental = await request(app)
+    await request(app)
       .post('/api/v1/rental')
       .send({
         name: 'Localiza Rent a Car',
