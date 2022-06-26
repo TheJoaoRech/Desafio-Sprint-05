@@ -26,8 +26,8 @@ class ReserveRepository {
     return ReserveSchema.findByIdAndUpdate(payload, reqBody);
   }
 
-  async deleteReserve(payload) {
-    return ReserveSchema.findByIdAndDelete(payload);
+  async deleteReserve(_id) {
+    return ReserveSchema.findByIdAndDelete(_id);
   }
 }
 

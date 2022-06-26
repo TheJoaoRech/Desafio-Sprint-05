@@ -25,8 +25,8 @@ class FleetService {
     return result;
   }
 
-  async deleteFleet(payload) {
-    const result = await FleetRepository.deleteFleet(payload);
+  async deleteFleet(_id) {
+    const result = await FleetRepository.deleteFleet(_id);
     return result;
   }
 }

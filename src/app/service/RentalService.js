@@ -21,8 +21,8 @@ class RentalServices {
     return result;
   }
 
-  async deleteRental(payload) {
-    const result = await RentalRepository.deleteRental(payload);
+  async deleteRental(_id) {
+    const result = await RentalRepository.deleteRental(_id);
     return result;
   }
 }

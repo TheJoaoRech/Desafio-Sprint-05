@@ -26,8 +26,8 @@ class CarService {
     return result;
   }
 
-  async deleteCar(payload) {
-    const result = await CarRepository.deleteCar(payload);
+  async deleteCar(_id) {
+    const result = await CarRepository.deleteCar(_id);
     return result;
   }
 }

@@ -26,8 +26,8 @@ class FleetRepository {
     return FleetSchema.findByIdAndUpdate(payload, reqBody);
   }
 
-  async deleteFleet(payload) {
-    return FleetSchema.findByIdAndDelete(payload);
+  async deleteFleet(_id) {
+    return FleetSchema.findByIdAndDelete(_id);
   }
 }
 

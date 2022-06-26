@@ -27,8 +27,8 @@ class ReserveService {
     return result;
   }
 
-  async deleteReserve(payload) {
-    const result = await ReserveRepository.deleteReserve(payload);
+  async deleteReserve(_id) {
+    const result = await ReserveRepository.deleteReserve(_id);
     return result;
   }
 }

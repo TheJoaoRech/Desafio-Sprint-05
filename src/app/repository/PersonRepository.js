@@ -26,8 +26,8 @@ class PersonRepository {
     return PersonSchema.findByIdAndUpdate(payload, reqBody);
   }
 
-  async deletePerson(payload) {
-    return PersonSchema.findByIdAndDelete(payload);
+  async deletePerson(_id) {
+    return PersonSchema.findByIdAndDelete(_id);
   }
 
   async auth(email) {

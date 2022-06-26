@@ -31,8 +31,8 @@ class CarRepository {
     return result;
   }
 
-  async deleteCar(payload) {
-    return CarSchema.findByIdAndDelete(payload);
+  async deleteCar(_id) {
+    return CarSchema.findByIdAndDelete(_id);
   }
 }
 

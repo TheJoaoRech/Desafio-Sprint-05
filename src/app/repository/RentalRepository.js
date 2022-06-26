@@ -36,8 +36,8 @@ class RentalRepository {
     return RentalSchema.findByIdAndUpdate(payload, reqBody);
   }
 
-  async deleteRental(payload) {
-    return RentalSchema.findByIdAndDelete(payload);
+  async deleteRental(_id) {
+    return RentalSchema.findByIdAndDelete(_id);
   }
 }
 
