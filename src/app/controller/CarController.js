@@ -64,7 +64,7 @@ class CarController {
       const result = await CarService.deleteCar(req.params.id);
       return res.status(204).json(result);
     } catch (error) {
-      return res.status(error.status || 400).send();
+      return res.status(error.status || 404).send();
     }
   }
 }
