@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const PersonRepository = require('../repository/PersonRepository');
-const authConfig = require('../config/authConfig.json');
+require('dotenv').config();
 
 class AuthService {
   async auth(email, password) {
@@ -17,7 +17,7 @@ class AuthService {
     }
 
     person.password = undefined;
-    const token = jwt.sign({ id: person.id }, authConfig.secret, {
+    const token = jwt.sign({ id: person.id }, process.env.SECRET, {
       expiresIn: 86400,
     });
 
