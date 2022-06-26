@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../../src/app');
 const Person = require('../../src/app/schema/PersonSchema');
+
 describe('Delete person!', () => {
   beforeEach(async () => {
     await Person.deleteMany();
